@@ -11,7 +11,6 @@
     background-image: url('../../../images/profile/__edit-button/profile__edit-button.svg');
     background-repeat: no-repeat;
     background-position: center center;
-    background-color: #000;
 }
 
 .profile__edit-button:hover {

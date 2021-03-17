@@ -1,0 +1,16 @@
+.element {
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #000;
+    max-width: 282px;
+}
+
+@media screen and (max-width: 767px) {
+    .element {
+        margin: 0 auto;
+    }
+}

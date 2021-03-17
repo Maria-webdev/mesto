@@ -1,0 +1,16 @@
+.element__info {
+    margin-top: 25px;
+    margin-bottom: 31px;
+    margin-left: 21px;
+    margin-right: 15px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    .element__info {
+        margin-right: 30px;
+    }
+}

@@ -31,8 +31,8 @@
 @import url('../blocks/popup/__button/popup__button.css');
 @import url('../blocks/popup/__close-button/popup__close-button.css');
 @import url('../blocks/popup/__content/popup__content.css');
-@import url('../blocks/popup/__form/_about/popup__form-about.css');
-@import url('../blocks/popup/__form/_name/popup__form-name.css');
+@import url('../blocks/popup/__form-about/popup__form-about.css');
+@import url('../blocks/popup/__form-name/popup__form-name.css');
 @import url('../blocks/popup/__form/popup__form.css');
 @import url('../blocks/popup/__line/popup__line.css');
 @import url('../blocks/popup/__overlay/popup__overlay.css');

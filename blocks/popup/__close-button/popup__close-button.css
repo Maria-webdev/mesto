@@ -2,7 +2,6 @@
     margin: 0;
     margin-left: 400px;
     margin-top: -75px;
-    margin-bottom: 30px;
     padding: 0;
     width: 40px;
     height: 40px;
@@ -12,15 +11,20 @@
     background-repeat: no-repeat;
     background-position: center center;
     cursor: pointer;
+    position: absolute;
+    border: none;
+    transition: 0.3s;
    }
 
    .popup__close-button:hover {
     opacity: 0.6;
+    cursor: pointer;
     }
 
     @media screen and (max-width: 767px) {
         .popup__close-button {
-            margin-left: auto;
+            margin-left: 230px;
+            margin-bottom: 40px;
             width: 26px;
             height: 26px;
         }

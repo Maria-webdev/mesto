@@ -15,22 +15,21 @@
   <div class="page__container">
 
     <header class="header">
-      <img class="header__logo" src="images/header/__logo/header__logo.png" alt="логотип">
-      <img class="header__line" src="images/header/__line/header__line.png" alt="линия">
+      <img class="header__logo" src="images/header/__logo/header__logo.svg" alt="логотип">
     </header>
 
     <main class="content">
 
       <section class="profile">
         <img class="profile__avatar" src="images/profile/__avatar/profile__avatar.png" alt="фотография владельца профиля">
-        <article class="profile__info">
+        <div class="profile__info">
           <div class="profile__main">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="submit"></button>
+            <button class="profile__edit-button" type="button"></button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
-        </article>
-        <button class="profile__add-button" type="submit"></button>
+        </div>
+        <button class="profile__add-button" type="button"></button>
       </section>
 
       <section class="elements">
@@ -38,48 +37,48 @@
           <article class="element">
             <img class="element__pic" src="images/element/__pic/Aachen_Germany_Imperial-Cathedral.png" alt="Ахенский собор">
             <div class="element__info">
-              <h3 class="element__title">Аахен</h3>
-              <button class="element__like-button" type="submit"></button>
+              <h2 class="element__title">Аахен</h2>
+              <button class="element__like-button" type="button"></button>
             </div>
           </article>
 
           <article class="element">
             <img class="element__pic" src="images/element/__pic/Gartenbrunnen_der_Würzburger_Residenz.png" alt="Вюрцбургская резиденция">
             <div class="element__info">
-              <h3 class="element__title">Вюрцбург</h3>
-              <button class="element__like-button" type="submit"></button>
+              <h2 class="element__title">Вюрцбург</h2>
+              <button class="element__like-button" type="button"></button>
             </div>
           </article>
 
           <article class="element">
             <img class="element__pic" src="images/element/__pic/Koelner_Dom.png" alt="Кёльнский собор">
             <div class="element__info">
-              <h3 class="element__title">Кёльн</h3>
-              <button class="element__like-button" type="submit"></button>
+              <h2 class="element__title">Кёльн</h2>
+              <button class="element__like-button" type="button"></button>
             </div>
           </article>
 
           <article class="element">
             <img class="element__pic" src="images/element/__pic/Schloss_Augustusburg_Bruehl.png" alt="Аугустусбург и охотничий замок Фалькенлуст ">
             <div class="element__info">
-              <h3 class="element__title">Аугсбург</h3>
-              <button class="element__like-button" type="submit"></button>
+              <h2 class="element__title">Аугсбург</h2>
+              <button class="element__like-button" type="button"></button>
             </div>
           </article>
 
           <article class="element">
             <img class="element__pic" src="images/element/__pic/Speyer-Cathedral.png" alt="Шпайерский собор">
             <div class="element__info">
-              <h3 class="element__title">Шпейер</h3>
-              <button class="element__like-button" type="submit"></button>
+              <h2 class="element__title">Шпейер</h2>
+              <button class="element__like-button" type="button"></button>
             </div>
           </article>
 
           <article class="element">
             <img class="element__pic" src="images/element/__pic/Trier_Porta_Nigra_BW_3.png" alt="Порта Нигра">
             <div class="element__info">
-              <h3 class="element__title">Трир</h3>
-              <button class="element__like-button" type="submit"></button>
+              <h2 class="element__title">Трир</h2>
+              <button class="element__like-button" type="button"></button>
             </div>
           </article>
       </section>
@@ -95,13 +94,11 @@
   <div class="popup">
           <div class="popup__overlay"></div>
           <div class="popup__content">
-            <div class="popup__close-button"></div>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form">
-              <input class="popup__form-name" type="text" id="Name">
-              <img class="popup__line" src="images/popup/__line/popup__line.png" alt="линия">
-              <input class="popup__form-about" type="text" id="About">
-              <img class="popup__line" src="images/popup/__line/popup__line.png" alt="линия">
+            <button class="popup__close-button" type="button"></button>
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <form class="popup__form" name="edit">
+              <input class="popup__input popup__input_type_name" type="text" id="Name" name="name">
+              <input class="popup__input popup__input_type_about" type="text" id="About" name="about">
               <button class="popup__button" type="submit">Сохранить</button>
             </form>
           </div>

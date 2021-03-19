@@ -3,13 +3,16 @@
     padding: 0;
     width: 22px;
     height: 19px;
-    background-image: url('../../../images/element/__like-button/element__like-button.png');
+    background-image: url('../../../images/element/__like-button/element__like-button.svg');
     background-size: cover;
     border: none;
     background-color: #fff;
+    transition: 0.3s;
 }
 
 .element__like-button:hover {
-    background-image: url('../../../images/element/__like-button/profile__like-button-hover.png');
-    
+    background-color: #fff;
+    color: #000;
+    opacity: 0.5;
+    cursor: pointer;
 }

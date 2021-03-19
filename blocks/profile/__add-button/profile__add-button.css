@@ -13,10 +13,12 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-color: #000;
+    transition: 0.3s;
 }
 
 .profile__add-button:hover {
     opacity: 0.6;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {

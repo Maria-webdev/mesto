@@ -12,10 +12,12 @@
     text-align: center;
     background: #000;
     border-radius: 2px;
+    transition: 0.3s;
    }
 
 .popup__button:hover {
     opacity: 0.8;
+    cursor: pointer;
     }
 
     @media screen and (max-width: 767px) {

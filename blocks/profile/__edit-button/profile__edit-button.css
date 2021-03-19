@@ -6,23 +6,24 @@
     height: 24px;
     background-color: #000;
     border: 1px solid #fff;
-    box-sizing: border-box;
+    box-sizing: border-box; 
     color: #fff;
     background-image: url('../../../images/profile/__edit-button/profile__edit-button.svg');
     background-repeat: no-repeat;
     background-position: center center;
+    transition: 0.3s;
 }
 
 .profile__edit-button:hover {
     opacity: 0.6;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
     .profile__edit-button {
         margin: auto 0;
-        margin-left: auto;
-        align-self: center;
-        justify-self: right;
+        align-self: center;/*
+        justify-self: right;*/
         width: 18px;
         height: 18px;
     }

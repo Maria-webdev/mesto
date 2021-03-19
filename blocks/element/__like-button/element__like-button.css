@@ -8,6 +8,7 @@
     border: none;
     background-color: #fff;
     transition: 0.3s;
+    outline: none;
 }
 
 .element__like-button:hover {

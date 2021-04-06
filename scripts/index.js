@@ -25,8 +25,8 @@ const initialCards = [
   }
 ]; 
 
-const popupEdit = document.querySelector('.popup__edit');
-const popupAdd = document.querySelector('.popup__add');
+const popupEdit = document.querySelector('.popup_edit');
+const popupAdd = document.querySelector('.popup_add');
 const popupPic = document.querySelector('.popup-pic');
 
 const closeBtn = document.querySelector('.popup__close-button');

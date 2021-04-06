@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    max-height: 282px;
+    height: 282px;
     object-fit: cover;
+}
+
+.element__pic:hover {
+    cursor: pointer;
 }

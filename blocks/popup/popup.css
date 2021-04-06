@@ -10,4 +10,8 @@
     bottom: 0;
     visibility: hidden;
     display: flex;
+    background-color:rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    transition: visibility 0.3s, opacity 0.5s linear;
 }

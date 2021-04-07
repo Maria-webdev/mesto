@@ -1,35 +1,12 @@
-const initialCards = [
-  {
-    name: 'Аахен',
-    link: src='images/element/__pic/Aachen_Germany_Imperial-Cathedral.png'
-  },
-  {
-    name: 'Вюрцбург',
-    link: src='images/element/__pic/Gartenbrunnen_der_Würzburger_Residenz.png'
-  },
-  {
-    name: 'Кёльн',
-    link: src='images/element/__pic/Koelner_Dom.png'
-  },
-  {
-    name: 'Аугсбург',
-    link: src='images/element/__pic/Schloss_Augustusburg_Bruehl.png'
-  },
-  {
-    name: 'Шпейер',
-    link: src='images/element/__pic/Speyer-Cathedral.png'
-  },
-  {
-    name: 'Трир',
-    link: src='images/element/__pic/Trier_Porta_Nigra_BW_3.png'
-  }
-]; 
-
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupPic = document.querySelector('.popup-pic');
 
+const closeEditBtn = document.querySelector('.popup__close-button_edit');
+const closeAddBtn = document.querySelector('.popup__close-button_add');
+const closePicBtn = document.querySelector('.popup__close-button_pic');
 const closeBtn = document.querySelector('.popup__close-button');
+
 const editBtn = document.querySelector('.profile__edit-button');
 const addBtn = document.querySelector('.profile__add-button');
 
@@ -44,6 +21,9 @@ const formAdd = popupAdd.querySelector('.popup__form');
 const cardTemplate = document.querySelector('#element-temlate').content;
 const elements = document.querySelector('.elements');
 
+const placeInput = document.querySelector('.popup__input_type_place-name');
+const linkInput = document.querySelector('.popup__input_type_URL');
+
 function openPopup(popup) {
 	popup.classList.add('popup_visible');
 }
@@ -56,7 +36,6 @@ function openPopupEdit() {
 
 function closePopup(popup) {
 	popup.classList.remove('popup_visible');
-  popup.classList.remove('popup-pic_visible');
 }
 
 function formSubmitHandler(evt) {
@@ -71,29 +50,16 @@ function formSubmitHandler(evt) {
 function formSubmitHandlerPopupAdd(evt) {
   evt.preventDefault();
 
-	const placeInput = document.querySelector('.popup__input_type_place-name');
-	const placeValue = placeInput.value;
-	const linkInput = document.querySelector('.popup__input_type_URL');
+  const placeValue = placeInput.value;
 	const placeLink = linkInput.value;
-	const arr = { name: placeValue, link: placeLink };
-	const placeElement = createCard(arr);
+	const placeCard = { name: placeValue, link: placeLink };
+	const placeElement = createCard(placeCard);
 
 	elements.prepend(placeElement);
 	closePopup(this.closest('.popup'));
-	linkInput.value = '', placeInput.value = '';
+	linkInput.value = '';
+  placeInput.value = '';
 };
-
-formAdd.addEventListener('submit', formSubmitHandlerPopupAdd);
-
-editBtn.addEventListener('click', openPopupEdit);
-addBtn.addEventListener('click', function(){ openPopup(popupAdd) });
-
-popupAdd.querySelector('.popup__close-button').addEventListener('click', function(){ closePopup(this.closest('.popup')) });
-popupPic.querySelector('.popup__close-button').addEventListener('click', function(){ closePopup(this.closest('.popup')) });
-
-closeBtn.addEventListener('click', function(){ closePopup(this.closest('.popup')) });
-
-formElement.addEventListener('submit', formSubmitHandler);
 
 function createCard(cardData) {
 	const element = cardTemplate.cloneNode(true);
@@ -113,7 +79,7 @@ function createCard(cardData) {
 	});
 
     element.querySelector('.element__pic').addEventListener('click', function(evt){
-      popupPic.classList.add('popup-pic_visible');
+      popupPic.classList.add('popup_visible');
       pic.src = evt.target.src;
       pic.alt = cardData.name;
       picTitle.textContent = cardData.name;
@@ -122,13 +88,21 @@ function createCard(cardData) {
 	return element;
 }
 
-function createCards(){
-	const placeElements = document.createDocumentFragment();
-
-	initialCards.forEach(function (element, index) {
-		placeElements.appendChild(createCard(element));
-	});
-
-	elements.append(placeElements);
+function createCards() {
+  initialCards.forEach((element) => {
+    elements.append(createCard(element))
+  })
 }
+
+formAdd.addEventListener('submit', formSubmitHandlerPopupAdd);
+
+editBtn.addEventListener('click', openPopupEdit);
+addBtn.addEventListener('click', () => openPopup(popupAdd));
+
+closeAddBtn.addEventListener('click', () => closePopup(popupAdd));
+closePicBtn.addEventListener('click', () => closePopup(popupPic));
+closeEditBtn.addEventListener('click', () => closePopup(popupEdit));
+
+formElement.addEventListener('submit', formSubmitHandler);
+
 createCards();

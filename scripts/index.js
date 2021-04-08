@@ -29,9 +29,10 @@ function openPopup(popup) {
 }
 
 function openPopupEdit() {
-    openPopup(popupEdit);
+    
     nameForm.value = nameInput.textContent;
     aboutForm.value = aboutInput.textContent;
+    openPopup(popupEdit);
 }
 
 function closePopup(popup) {
@@ -44,7 +45,7 @@ function formSubmitHandler(evt) {
     nameInput.textContent = nameForm.value;
     aboutInput.textContent = aboutForm.value;
 
-    closePopup(this.closest('.popup'));
+    closePopup(popupEdit);
 }
 
 function formSubmitHandlerPopupAdd(evt) {
@@ -52,11 +53,10 @@ function formSubmitHandlerPopupAdd(evt) {
 
   const placeValue = placeInput.value;
 	const placeLink = linkInput.value;
-	const placeCard = { name: placeValue, link: placeLink };
-	const placeElement = createCard(placeCard);
+  const placeElement = createCard({ name: placeInput.value, link: linkInput.value });
 
 	elements.prepend(placeElement);
-	closePopup(this.closest('.popup'));
+	closePopup(popupAdd);
 	linkInput.value = '';
   placeInput.value = '';
 };
@@ -79,7 +79,7 @@ function createCard(cardData) {
 	});
 
     element.querySelector('.element__pic').addEventListener('click', function(evt){
-      popupPic.classList.add('popup_visible');
+      openPopup(popupPic);
       pic.src = evt.target.src;
       pic.alt = cardData.name;
       picTitle.textContent = cardData.name;
@@ -106,3 +106,4 @@ closeEditBtn.addEventListener('click', () => closePopup(popupEdit));
 formElement.addEventListener('submit', formSubmitHandler);
 
 createCards();
+

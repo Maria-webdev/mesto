@@ -1,6 +1,7 @@
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupPic = document.querySelector('.popup-pic');
+const popups = document.querySelectorAll('.popup');
 
 const closeEditBtn = document.querySelector('.popup__close-button_edit');
 const closeAddBtn = document.querySelector('.popup__close-button_add');
@@ -24,19 +25,41 @@ const elements = document.querySelector('.elements');
 const placeInput = document.querySelector('.popup__input_type_place-name');
 const linkInput = document.querySelector('.popup__input_type_URL');
 
+
 function openPopup(popup) {
 	popup.classList.add('popup_visible');
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 function openPopupEdit() {
-    
     nameForm.value = nameInput.textContent;
     aboutForm.value = aboutInput.textContent;
     openPopup(popupEdit);
 }
 
+function closePopupEsc(evt) {
+  if(evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_visible');
+    closePopup(popup);
+  }
+}
+
+function closePopupOverlay() {
+  popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+      if(evt.target.classList.contains('popup_visible')) {
+        closePopup(popup);
+      }
+      if(evt.target.classList.contains('popup__close')) {
+        closePopup(popup);
+      }
+    })
+  })
+}
+
 function closePopup(popup) {
 	popup.classList.remove('popup_visible');
+  document.removeEventListener('keydown', closePopupEsc);
 }
 
 function formSubmitHandler(evt) {
@@ -94,6 +117,7 @@ function createCards() {
   })
 }
 
+
 formAdd.addEventListener('submit', formSubmitHandlerPopupAdd);
 
 editBtn.addEventListener('click', openPopupEdit);
@@ -102,8 +126,8 @@ addBtn.addEventListener('click', () => openPopup(popupAdd));
 closeAddBtn.addEventListener('click', () => closePopup(popupAdd));
 closePicBtn.addEventListener('click', () => closePopup(popupPic));
 closeEditBtn.addEventListener('click', () => closePopup(popupEdit));
+document.addEventListener('click', closePopupOverlay);
 
 formElement.addEventListener('submit', formSubmitHandler);
 
 createCards();
-

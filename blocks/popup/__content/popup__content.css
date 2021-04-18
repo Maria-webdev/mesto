@@ -1,7 +1,7 @@
 .popup__content {
     margin: auto auto;
     padding: 34px 36px 37px 36px;
-    max-width: 430px;
+    width: 430px;
     color: #000;
     box-sizing: border-box;
     background-color: #fff;

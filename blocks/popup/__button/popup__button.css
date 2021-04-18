@@ -12,7 +12,7 @@
     text-align: center;
     background: #000;
     border-radius: 2px;
-    transition: 0.3s;
+    transition: 0.3s ease;
    }
 
 .popup__button:hover {

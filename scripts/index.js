@@ -29,11 +29,13 @@ const linkInput = document.querySelector('.popup__input_type_URL');
 function openPopup(popup) {
 	popup.classList.add('popup_visible');
   document.addEventListener('keydown', closePopupEsc);
+  clearValidationState(validationElements);
 }
 
 function openPopupEdit() {
     nameForm.value = nameInput.textContent;
     aboutForm.value = aboutInput.textContent;
+    clearValidationState(validationElements);
     openPopup(popupEdit);
 }
 

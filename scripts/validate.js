@@ -6,7 +6,7 @@ const validationElements = {
     inactiveButtonClass: "popup__button_inactive",
     errorClass: ".popup__error",
     errorMessageInput: "Вы пропустили это поле.",
-    errorMessageUrl: "Введите адрес сайта.",
+    errorMessageUrl: "Введите адрес сайта."
 };
 
 

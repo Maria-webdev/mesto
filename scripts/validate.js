@@ -4,7 +4,7 @@ const validationElements = {
     inputErrorClass: "popup__input_type_error",
     submitButtonSelector: ".popup__button",
     inactiveButtonClass: "popup__button_inactive",
-    errorClass: ".popup__error",
+    errorClass: "popup__error_visible",
     errorMessageInput: "Вы пропустили это поле.",
     errorMessageUrl: "Введите адрес сайта."
 };

@@ -29,7 +29,6 @@ const linkInput = document.querySelector('.popup__input_type_URL');
 function openPopup(popup) {
 	popup.classList.add('popup_visible');
   document.addEventListener('keydown', closePopupEsc);
-  clearValidationState(validationElements);
 }
 
 function openPopupEdit() {
@@ -64,7 +63,7 @@ function closePopup(popup) {
   document.removeEventListener('keydown', closePopupEsc);
 }
 
-function formSubmitHandler(evt) {
+function handleFormSubmit(evt) {
     evt.preventDefault();
 
     nameInput.textContent = nameForm.value;
@@ -73,7 +72,7 @@ function formSubmitHandler(evt) {
     closePopup(popupEdit);
 }
 
-function formSubmitHandlerPopupAdd(evt) {
+function handleFormSubmitPopupAdd(evt) {
   evt.preventDefault();
 
   const placeValue = placeInput.value;
@@ -120,16 +119,20 @@ function createCards() {
 }
 
 
-formAdd.addEventListener('submit', formSubmitHandlerPopupAdd);
+formAdd.addEventListener('submit', handleFormSubmitPopupAdd);
 
-editBtn.addEventListener('click', openPopupEdit);
-addBtn.addEventListener('click', () => openPopup(popupAdd));
+editBtn.addEventListener('click', openPopupEdit); 
+
+addBtn.addEventListener('click', () => {
+  clearValidationState(validationElements);
+  openPopup(popupAdd);
+});
 
 closeAddBtn.addEventListener('click', () => closePopup(popupAdd));
 closePicBtn.addEventListener('click', () => closePopup(popupPic));
 closeEditBtn.addEventListener('click', () => closePopup(popupEdit));
-document.addEventListener('click', closePopupOverlay);
 
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', handleFormSubmit);
 
 createCards();
+closePopupOverlay();

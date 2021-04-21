@@ -45,11 +45,16 @@ function closePopupEsc(evt) {
   }
 }
 
-function closePopupOverlay(evt) {
-  if (evt.target.classList.contains('popup')) {
-    const popupOpened = document.querySelector('.popup_visible');
-    closePopup(popupOpened);
-  }
+function closePopupOverlay() {
+  const popups = document.querySelectorAll('.popup');
+
+  popups.forEach((item) => {
+    item.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_visible')) {
+        closePopup(item);
+      }
+    });
+  });
 }
 
 function closePopup(popup) {

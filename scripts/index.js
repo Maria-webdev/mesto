@@ -25,7 +25,6 @@ const elements = document.querySelector('.elements');
 const placeInput = document.querySelector('.popup__input_type_place-name');
 const linkInput = document.querySelector('.popup__input_type_URL');
 
-
 function openPopup(popup) {
 	popup.classList.add('popup_visible');
   document.addEventListener('keydown', closePopupEsc);
@@ -39,7 +38,7 @@ function openPopupEdit() {
 }
 
 function closePopupEsc(evt) {
-  if(evt.key === 'Escape') {
+  if(evt.keyCode === 27) {
     const popup = document.querySelector('.popup_visible');
     closePopup(popup);
   }

@@ -2,6 +2,7 @@ const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupPic = document.querySelector('.popup-pic');
 const popups = document.querySelectorAll('.popup');
+const popup = document.querySelector('.popup');
 
 const closeEditBtn = document.querySelector('.popup__close-button_edit');
 const closeAddBtn = document.querySelector('.popup__close-button_add');
@@ -44,17 +45,11 @@ function closePopupEsc(evt) {
   }
 }
 
-function closePopupOverlay() {
-  popups.forEach((popup) => {
-    popup.addEventListener('click', (evt) => {
-      if(evt.target.classList.contains('popup_visible')) {
-        closePopup(popup);
-      }
-      if(evt.target.classList.contains('popup__close')) {
-        closePopup(popup);
-      }
-    })
-  })
+function closePopupOverlay(evt) {
+  if (evt.target.classList.contains('popup')) {
+    const popupOpened = document.querySelector('.popup_visible');
+    closePopup(popupOpened);
+  }
 }
 
 function closePopup(popup) {

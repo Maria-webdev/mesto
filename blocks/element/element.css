@@ -6,12 +6,24 @@
     box-sizing: border-box;
     background-color: #fff;
     color: #000;
-    max-width: 282px;
+    width: 282px;
     position: relative;
 }
 
 @media screen and (max-width: 1023px) {
     .element {
         margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .element {
+        max-width: 45vw;
+    }
+}
+
+@media screen and (max-width: 435px) {
+    .element {
+        min-width: 282px;
     }
 }

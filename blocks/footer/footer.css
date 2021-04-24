@@ -8,14 +8,15 @@
     font-size: 18px;
     line-height: 22px;
     color: #545454;
+    border: 1px solid red;
 }
 
 @media screen and (max-width: 767px) {
     .footer {
-        margin: 0 auto;
+        margin: 0;
         margin-bottom: 36px;
         font-size: 14px;
         line-height: 17px;
-        max-width: 282px;
+        width: 100%;
     }
 }

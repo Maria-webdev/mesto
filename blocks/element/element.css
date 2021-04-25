@@ -23,8 +23,9 @@
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
     .element {
+        max-width: 100%;
         min-width: 282px;
         max-height: 75vh;
     }

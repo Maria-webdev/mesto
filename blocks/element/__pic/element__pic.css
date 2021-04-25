@@ -12,7 +12,7 @@
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
     .element__pic {
         max-height: 75vh;
     }

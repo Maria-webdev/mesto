@@ -6,6 +6,18 @@
     object-fit: cover;
 }
 
+@media screen and (max-width: 600px) {
+    .element__pic {
+        max-height: 20vh;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .element__pic {
+        max-height: 75vh;
+    }
+}
+
 .element__pic:hover {
     cursor: pointer;
 }

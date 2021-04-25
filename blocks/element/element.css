@@ -19,11 +19,13 @@
 @media screen and (max-width: 600px) {
     .element {
         max-width: 45vw;
+        max-height: 30vh;
     }
 }
 
-@media screen and (max-width: 435px) {
+@media screen and (max-width: 450px) {
     .element {
         min-width: 282px;
+        max-height: 75vh;
     }
 }

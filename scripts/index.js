@@ -1,3 +1,7 @@
+
+import initialCards from './initial-cards.js';
+import Card from './cards.js';
+
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupPic = document.querySelector('.popup-pic');
@@ -87,40 +91,12 @@ function handleFormSubmitPopupAdd(evt) {
   formAdd.reset();
 };
 
-function createCard(cardData) {
-  const element = cardTemplate.cloneNode(true);
-  const pic = document.querySelector('.popup-pic__image');
-  const picTitle = document.querySelector('.popup-pic__title');
+////////////////////////////////////////////////
 
-  element.querySelector('.element__title').textContent = cardData.name;
-  element.querySelector('.element__pic').src = cardData.link;
-  element.querySelector('.element__pic').alt = cardData.name;
-
-  element.querySelector('.element__like-button').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like-button_active');
-  });
-
-  element.querySelector('.element__delete-button').addEventListener('click', function (evt) {
-    evt.target.closest('.element').remove();
-  });
-
-  element.querySelector('.element__pic').addEventListener('click', function (evt) {
-    openPopup(popupPic);
-    pic.src = evt.target.src;
-    pic.alt = cardData.name;
-    picTitle.textContent = cardData.name;
-  });
-
-  return element;
-}
-
-function createCards() {
-  initialCards.forEach((element) => {
-    elements.append(createCard(element))
-  })
-}
+//  cards
 
 
+/////////////////////////////////////////////////
 formAdd.addEventListener('submit', handleFormSubmitPopupAdd);
 
 editBtn.addEventListener('click', openPopupEdit);
@@ -132,5 +108,5 @@ closeEditBtn.addEventListener('click', () => closePopup(popupEdit));
 
 formEdit.addEventListener('submit', handleFormSubmit);
 
-createCards();
+/*createCards();*/
 closePopupOverlay();

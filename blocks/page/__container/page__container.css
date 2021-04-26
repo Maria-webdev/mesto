@@ -5,4 +5,5 @@
     max-width: 880px;
     min-width: 320px;
     box-sizing: border-box;
+    overflow-x: hidden;
 }

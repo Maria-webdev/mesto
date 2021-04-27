@@ -1,5 +1,7 @@
 import { initialCards } from '../scripts/initial-сards.js';
-import * as all from '../scripts/consts.js';
+import { popupEdit, popupAdd, popupPic, popups, popup, closeEditBtn, closeAddBtn,
+  closePicBtn, closeBtn, editBtn, addBtn, nameInput, aboutInput, nameForm, aboutForm, formEdit,
+  formAdd, elements, placeInput, linkInput, picTitle } from '../scripts/consts.js';
 import { Card } from '../scripts/Card.js';
 /*import { initialCards } from '../scripts/validate';*/
 
@@ -66,14 +68,11 @@ function handleFormSubmitPopupAdd(evt) {
 };
 
 function handleCardClick(card) {
-  popupPic.src = card.link;
-  popupPic.alt = card.name;
-  picTitle.textContent = card.name;
 
   openPopup(popupPic);
 } 
 
-function createCards() {
+function createCard() {
 initialCards.forEach((item) => {
   const card = new Card(item, "#element-template", handleCardClick);
   const cardElement = card.generateCard();
@@ -82,36 +81,8 @@ initialCards.forEach((item) => {
 })
 };
 
-createCards();
+createCard();
 
-/*
-/*
-function createCard(cardData) { 
-	const element = cardTemplate.cloneNode(true); 
-	const pic = document.querySelector('.popup-pic__image'); 
-	const picTitle = document.querySelector('.popup-pic__title'); 
- 
-	element.querySelector('.element__title').textContent = cardData.name; 
-  element.querySelector('.element__pic').src = cardData.link; 
-  element.querySelector('.element__pic').alt = cardData.name; 
- 
-    element.querySelector('.element__pic').addEventListener('click', function(evt){ 
-      openPopup(popupPic); 
-      pic.src = evt.target.src; 
-      pic.alt = cardData.name; 
-      picTitle.textContent = cardData.name; 
-    }); 
- 
-	return element; 
-} 
- 
-function createCards() { 
-  initialCards.forEach((element) => { 
-    elements.append(createCard(element)) 
-  }) 
-  
-} 
-*/
 
 formAdd.addEventListener('submit', handleFormSubmitPopupAdd);
 

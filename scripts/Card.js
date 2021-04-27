@@ -34,16 +34,13 @@ export class Card {
         this._element.remove();
     }
 
-    _handleCardClick() {
-
-    }
-
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
 
-        this._element.querySelector('.element__pic').style.backgroundImage = `url(${this._image})`;
-        this._element.querySelector(".element__title").textContent = this.name;
+        this._element.querySelector('.element__title').textContent = this._title;
+        this._element.querySelector('.element__title').alt = this._title;
+        this._element.querySelector('.element__pic').src = this._image;
 
         return this._element;
     }

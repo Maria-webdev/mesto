@@ -65,6 +65,14 @@ function handleFormSubmitPopupAdd(evt) {
   formAdd.reset();
 };
 
+function handleCardClick(card) {
+  popupPic.src = card.link;
+  popupPic.alt = card.name;
+  picTitle.textContent = card.name;
+
+  openPopup(popupPic);
+} 
+
 function createCards() {
 initialCards.forEach((item) => {
   const card = new Card(item, "#element-template", handleCardClick);
@@ -73,12 +81,9 @@ initialCards.forEach((item) => {
   document.querySelector('.elements').prepend(cardElement);
 })
 };
+
 createCards();
 
-
-function handleCardClick(card) {
-  openPopup(popupPic);
-}
 /*
 /*
 function createCard(cardData) { 
@@ -119,5 +124,5 @@ closeEditBtn.addEventListener('click', () => closePopup(popupEdit));
 
 formEdit.addEventListener('submit', handleFormSubmit);
 
-/*createCards();*/
+
 closePopupOverlay();

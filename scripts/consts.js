@@ -25,7 +25,8 @@ const elements = document.querySelector('.elements');
 const placeInput = document.querySelector('.popup__input_type_place-name');
 const linkInput = document.querySelector('.popup__input_type_URL');
 
-const picTitle = document.querySelector('.popup-pic__title');
+const pic = document.querySelector('.popup-pic__image'); 
+const picTitle = document.querySelector('.popup-pic__title'); 
 
 export { popupEdit,
          popupAdd,
@@ -47,5 +48,6 @@ export { popupEdit,
          elements,
          placeInput,
          linkInput,
+         pic,
          picTitle
         };

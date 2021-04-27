@@ -1,4 +1,3 @@
-
 import { initialCards } from '../scripts/initial-сards.js';
 import * as all from '../scripts/consts.js';
 import { Card } from '../scripts/Card.js';
@@ -74,31 +73,10 @@ initialCards.forEach((item) => {
 })();
 
 function handleCardClick(card) {
-  popupPic.src = card.link;
-  popupPic.alt = card.name;
-  picTitle.textContent = card.name;
-
   openPopup(popupPic);
 }
 /*
-const handleCardSubmit = (evt) => {
-  evt.preventDefault();
 
-  const obj = {
-    link: cardPopupInputLink.value,
-    name: cardPopupInputName.value,
-  };
-
-  const cardElement = createCard(obj, templateElement);
-
-  container.prepend(cardElement);
-
-  closePopup(cardPopup);
-
-  // profileFormElement.reset();
-  cardPopupInputLink.value = "";
-  cardPopupInputName.value = "";
-};
 /*
 function createCard(cardData) { 
 	const element = cardTemplate.cloneNode(true); 
@@ -123,8 +101,6 @@ function createCards() {
   initialCards.forEach((element) => { 
     elements.append(createCard(element)) 
   }) 
-
-
   
 } 
 */

@@ -66,14 +66,6 @@ function handleFormSubmitPopupAdd(evt) {
     formAdd.reset();
 }
 
-function handleCardClick(card) {
-    openPopup(popupPic);
-
-    pic.src = card.link;
-    pic.alt = card.name;
-    picTitle.textContent = card.name;
-}
-
 function createCard() {
     initialCards.forEach((item) => {
         const card = new Card(item, "#element-template", handleCardClick);
@@ -84,6 +76,15 @@ function createCard() {
 }
 
 createCard();
+
+function handleCardClick(card) {
+    openPopup(popupPic);
+
+    pic.src = card.link;
+    pic.alt = card.name;
+    picTitle.textContent = card.name;
+}
+
 
 formAdd.addEventListener("submit", handleFormSubmitPopupAdd);
 

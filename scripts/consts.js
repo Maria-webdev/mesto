@@ -1,4 +1,3 @@
-
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupPic = document.querySelector('.popup-pic');

@@ -65,18 +65,21 @@ function handleFormSubmitPopupAdd(evt) {
   formAdd.reset();
 };
 
+function createCards() {
 initialCards.forEach((item) => {
   const card = new Card(item, "#element-template", handleCardClick);
   const cardElement = card.generateCard();
 
   document.querySelector('.elements').prepend(cardElement);
-})();
+})
+};
+createCards();
+
 
 function handleCardClick(card) {
   openPopup(popupPic);
 }
 /*
-
 /*
 function createCard(cardData) { 
 	const element = cardTemplate.cloneNode(true); 

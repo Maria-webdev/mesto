@@ -1,6 +1,8 @@
 
-import initialCards from './initial-cards.js';
-import Card from './cards.js';
+import { initialCards } from '../scripts/initial-сards';
+import { Card  } from '../scripts/Card';
+/*import { initialCards } from '../scripts/validate';*/
+
 
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');

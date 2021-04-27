@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: 'Аахен',
     link: 'images/element/__pic/Aachen_Germany_Imperial-Cathedral.png'

@@ -1,12 +1,13 @@
 export class Card {
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, handleCardClick) {
         this._title = data.name;
         this._image = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
-        const cardElement = document.querySelector(this._cardSelector).content.querySelector(".element").cloneNode(true);
+        const cardElement = document.querySelector(this._cardSelector).content.querySelector("#element-template").cloneNode(true);
 
         return cardElement;
     }
@@ -31,6 +32,10 @@ export class Card {
     _deleteBtnClick() {
         this._element.querySelector(".element__delete-button");
         this._element.remove();
+    }
+
+    _handleCardClick() {
+
     }
 
     generateCard() {

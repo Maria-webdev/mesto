@@ -66,6 +66,39 @@ function handleFormSubmitPopupAdd(evt) {
   formAdd.reset();
 };
 
+initialCards.forEach((item) => {
+  const card = new Card(item, "#element-template", handleCardClick);
+  const cardElement = card.generateCard();
+
+  container.prepend(cardElement);
+});
+
+function handleCardClick(card) {
+  popupPic.src = card.link;
+  popupPic.alt = card.name;
+  picTitle.textContent = card.name;
+
+  openPopup(popupPic);
+}
+/*
+const handleCardSubmit = (evt) => {
+  evt.preventDefault();
+
+  const obj = {
+    link: cardPopupInputLink.value,
+    name: cardPopupInputName.value,
+  };
+
+  const cardElement = createCard(obj, templateElement);
+
+  container.prepend(cardElement);
+
+  closePopup(cardPopup);
+
+  // profileFormElement.reset();
+  cardPopupInputLink.value = "";
+  cardPopupInputName.value = "";
+};
 /*
 function createCard(cardData) { 
 	const element = cardTemplate.cloneNode(true); 
@@ -91,9 +124,8 @@ function createCards() {
     elements.append(createCard(element)) 
   }) 
 
-  методом foreach для каждого элемента 
-  записать метод  generateCard() в createcard
-  и говорю, куда отрисать карточку, методом append(?)
+
+  
 } 
 */
 

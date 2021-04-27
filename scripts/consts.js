@@ -21,11 +21,12 @@ const aboutForm = document.querySelector('.popup__input_type_about');
 const formEdit = document.querySelector('.popup__form');
 const formAdd = popupAdd.querySelector('.popup__form');
 
-const cardTemplate = document.querySelector('#element-temlate').content;
 const elements = document.querySelector('.elements');
 
 const placeInput = document.querySelector('.popup__input_type_place-name');
 const linkInput = document.querySelector('.popup__input_type_URL');
+
+const picTitle = document.querySelector('.popup-pic__title');
 
 export { popupEdit,
          popupAdd,
@@ -44,8 +45,8 @@ export { popupEdit,
          aboutForm,
          formEdit,
          formAdd,
-         cardTemplate,
          elements,
          placeInput,
-         linkInput
+         linkInput,
+         picTitle
         };

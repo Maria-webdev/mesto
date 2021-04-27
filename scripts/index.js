@@ -1,36 +1,9 @@
 
 import { initialCards } from '../scripts/initial-сards.js';
-import { Card  } from '../scripts/Card.js';
+import * as all from '../scripts/consts.js';
+import { Card } from '../scripts/Card.js';
 /*import { initialCards } from '../scripts/validate';*/
 
-
-const popupEdit = document.querySelector('.popup_edit');
-const popupAdd = document.querySelector('.popup_add');
-const popupPic = document.querySelector('.popup-pic');
-const popups = document.querySelectorAll('.popup');
-const popup = document.querySelectorAll('.popup');
-
-const closeEditBtn = document.querySelector('.popup__close-button_edit');
-const closeAddBtn = document.querySelector('.popup__close-button_add');
-const closePicBtn = document.querySelector('.popup__close-button_pic');
-const closeBtn = document.querySelector('.popup__close-button');
-
-const editBtn = document.querySelector('.profile__edit-button');
-const addBtn = document.querySelector('.profile__add-button');
-
-const nameInput = document.querySelector('.profile__title');
-const aboutInput = document.querySelector('.profile__subtitle');
-const nameForm = document.querySelector('.popup__input_type_name');
-const aboutForm = document.querySelector('.popup__input_type_about');
-
-const formEdit = document.querySelector('.popup__form');
-const formAdd = popupAdd.querySelector('.popup__form');
-
-const cardTemplate = document.querySelector('#element-temlate').content;
-const elements = document.querySelector('.elements');
-
-const placeInput = document.querySelector('.popup__input_type_place-name');
-const linkInput = document.querySelector('.popup__input_type_URL');
 
 function openPopup(popup) {
   popup.classList.add('popup_visible');
@@ -93,12 +66,37 @@ function handleFormSubmitPopupAdd(evt) {
   formAdd.reset();
 };
 
-////////////////////////////////////////////////
+/*
+function createCard(cardData) { 
+	const element = cardTemplate.cloneNode(true); 
+	const pic = document.querySelector('.popup-pic__image'); 
+	const picTitle = document.querySelector('.popup-pic__title'); 
+ 
+	element.querySelector('.element__title').textContent = cardData.name; 
+  element.querySelector('.element__pic').src = cardData.link; 
+  element.querySelector('.element__pic').alt = cardData.name; 
+ 
+    element.querySelector('.element__pic').addEventListener('click', function(evt){ 
+      openPopup(popupPic); 
+      pic.src = evt.target.src; 
+      pic.alt = cardData.name; 
+      picTitle.textContent = cardData.name; 
+    }); 
+ 
+	return element; 
+} 
+ 
+function createCards() { 
+  initialCards.forEach((element) => { 
+    elements.append(createCard(element)) 
+  }) 
 
-//  cards
+  методом foreach для каждого элемента 
+  записать метод  generateCard() в createcard
+  и говорю, куда отрисать карточку, методом append(?)
+} 
+*/
 
-
-/////////////////////////////////////////////////
 formAdd.addEventListener('submit', handleFormSubmitPopupAdd);
 
 editBtn.addEventListener('click', openPopupEdit);

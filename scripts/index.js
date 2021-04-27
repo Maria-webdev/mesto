@@ -1,6 +1,6 @@
 
-import { initialCards } from '../scripts/initial-сards';
-import { Card  } from '../scripts/Card';
+import { initialCards } from '../scripts/initial-сards.js';
+import { Card  } from '../scripts/Card.js';
 /*import { initialCards } from '../scripts/validate';*/
 
 

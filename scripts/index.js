@@ -70,8 +70,8 @@ initialCards.forEach((item) => {
   const card = new Card(item, "#element-template", handleCardClick);
   const cardElement = card.generateCard();
 
-  container.prepend(cardElement);
-});
+  document.querySelector('.elements').prepend(cardElement);
+})();
 
 function handleCardClick(card) {
   popupPic.src = card.link;

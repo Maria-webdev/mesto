@@ -110,3 +110,17 @@ function handleCardClick(card) {
   pic.alt = card.name;
   picTitle.textContent = card.name;
 }
+
+formAdd.addEventListener("submit", handleFormSubmitPopupAdd);
+
+editBtn.addEventListener("click", openPopupEdit);
+addBtn.addEventListener("click", openPopupAdd);
+
+closeAddBtn.addEventListener("click", () => closePopup(popupAdd));
+closePicBtn.addEventListener("click", () => closePopup(popupPic));
+closeEditBtn.addEventListener("click", () => closePopup(popupEdit));
+
+formEdit.addEventListener("submit", handleFormSubmit);
+
+
+closePopupOverlay();

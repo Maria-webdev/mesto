@@ -48,7 +48,7 @@
       <div class="popup__content">
         <button class="popup__close-button popup__close-button_edit" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form_type_edit" name="edit" novalidate>
+        <form class="popup__form popup__form_type_edit" name="edit" novalidate>
           <input class="popup__input popup__input_type_name" type="text" id="name" name="name" required minlength="2" maxlength="40" placeholder="Имя" />
           <span class="popup__error" id="name-error"></span>
           <input class="popup__input popup__input_type_about" type="text" id="about" name="about" required minlength="2" maxlength="200" placeholder="О Себе" />
@@ -62,7 +62,7 @@
       <div class="popup__content">
         <button class="popup__close-button popup__close-button_add" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form_type_add" name="add" novalidate>
+        <form class="popup__form popup__form_type_add" name="add" novalidate>
           <input class="popup__input popup__input_type_place-name" id="place" type="text" name="place-name" placeholder="Название" required minlength="2" maxlength="30" />
           <span class="popup__error" id="place-error"></span>
           <input class="popup__input popup__input_type_URL" id="url" type="url" name="URL" placeholder="Ссылка на картинку" required />

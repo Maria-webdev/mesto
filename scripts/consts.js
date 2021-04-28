@@ -4,6 +4,9 @@ const popupPic = document.querySelector(".popup-pic");
 const popups = document.querySelectorAll(".popup");
 const popup = document.querySelectorAll(".popup");
 
+const popupFormEdit = document.querySelector(".popup__form_type_edit");
+const popupFormAdd = document.querySelector(".popup__form_type_add");
+
 const closeEditBtn = document.querySelector(".popup__close-button_edit");
 const closeAddBtn = document.querySelector(".popup__close-button_add");
 const closePicBtn = document.querySelector(".popup__close-button_pic");
@@ -28,4 +31,17 @@ const linkInput = document.querySelector(".popup__input_type_URL");
 const pic = document.querySelector(".popup-pic__image");
 const picTitle = document.querySelector(".popup-pic__title");
 
-export { popupEdit, popupAdd, popupPic, popups, popup, closeEditBtn, closeAddBtn, closePicBtn, closeBtn, editBtn, addBtn, nameInput, aboutInput, nameForm, aboutForm, formEdit, formAdd, elements, placeInput, linkInput, pic, picTitle };
+const validationElements = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    inputErrorClass: "popup__input_type_error",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_inactive",
+    errorClass: "popup__error_visible",
+    errorMessageInput: "Вы пропустили это поле.",
+    errorMessageUrl: "Введите адрес сайта.",
+  };
+
+export { popupEdit, popupAdd, popupPic, popups, popup, popupFormEdit, popupFormAdd, closeEditBtn, closeAddBtn,
+         closePicBtn, closeBtn, editBtn, addBtn, nameInput, aboutInput, nameForm, aboutForm, formEdit, formAdd,
+         elements, placeInput, linkInput, pic, picTitle, validationElements };

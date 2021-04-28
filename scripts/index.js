@@ -1,29 +1,15 @@
 import { initialCards } from "../scripts/initial-сards.js";
-import {
-  popupEdit,
-  popupAdd,
-  popupPic,
-  popups,
-  popup,
-  closeEditBtn,
-  closeAddBtn,
-  closePicBtn,
-  closeBtn,
-  editBtn,
-  addBtn,
-  nameInput,
-  aboutInput,
-  nameForm,
-  aboutForm,
-  formEdit,
-  formAdd,
-  elements,
-  placeInput,
-  linkInput,
-  pic,
-  picTitle,
-} from "../scripts/consts.js";
+import { popupEdit, popupAdd, popupPic, popups, popup, popupFormEdit, popupFormAdd, closeEditBtn, closeAddBtn,
+         closePicBtn, closeBtn, editBtn, addBtn, nameInput, aboutInput, nameForm, aboutForm, formEdit, formAdd,
+         elements, placeInput, linkInput, pic, picTitle, validationElements} from "../scripts/consts.js";
 import { Card } from "../scripts/Card.js";
+import { formValidator } from "../scripts/FormValidator.js";
+
+const formEditValidator = new formValidator(validationElements, popupFormEdit);
+formEditValidator.enableValidation();
+const formAddValidator = new formValidator(validationElements, popupFormAdd);
+formAddValidator.enableValidation();
+
 
 function openPopup(popup) {
   popup.classList.add("popup_visible");
@@ -33,13 +19,13 @@ function openPopup(popup) {
 function openPopupEdit() {
   nameForm.value = nameInput.textContent;
   aboutForm.value = aboutInput.textContent;
-  clearValidationState(validationElements);
+  formEditValidator.clearValidationState();
   openPopup(popupEdit);
 }
 
 function openPopupAdd() {
-  clearValidationState(validationElements);
-  formAdd.reset();
+  formAddValidator.clearValidationState();
+  popupFormAdd.reset();
   openPopup(popupAdd);
 }
 
@@ -83,7 +69,7 @@ function handleFormSubmitPopupAdd(evt) {
 
   elements.prepend(placeElement);
   closePopup(popupAdd);
-  formAdd.reset();
+  popupFormAdd.reset();
 }
 
 function createCard(item) {
@@ -103,15 +89,15 @@ function renderList() {
 
 renderList();
 
-function handleCardClick(card) {
+function handleCardClick(link, name) {
   openPopup(popupPic);
 
-  pic.src = card.link;
-  pic.alt = card.name;
-  picTitle.textContent = card.name;
+  pic.src = link;
+  pic.alt = name;
+  picTitle.textContent = name;
 }
 
-formAdd.addEventListener("submit", handleFormSubmitPopupAdd);
+popupFormAdd.addEventListener("submit", handleFormSubmitPopupAdd);
 
 editBtn.addEventListener("click", openPopupEdit);
 addBtn.addEventListener("click", openPopupAdd);
@@ -120,7 +106,7 @@ closeAddBtn.addEventListener("click", () => closePopup(popupAdd));
 closePicBtn.addEventListener("click", () => closePopup(popupPic));
 closeEditBtn.addEventListener("click", () => closePopup(popupEdit));
 
-formEdit.addEventListener("submit", handleFormSubmit);
+popupFormEdit.addEventListener("submit", handleFormSubmit);
 
 
 closePopupOverlay();

@@ -3,7 +3,7 @@ import { popupEdit, popupAdd, popupPic, popups, popup, popupFormEdit, popupFormA
          closePicBtn, closeBtn, editBtn, addBtn, nameInput, aboutInput, nameForm, aboutForm, formEdit, formAdd,
          elements, placeInput, linkInput, pic, picTitle, validationElements} from "../scripts/consts.js";
 import { Card } from "../scripts/Card.js";
-import { formValidator } from "../scripts/FormValidator.js";
+import { formValidator } from "./formValidator.js";
 
 const formEditValidator = new formValidator(validationElements, popupFormEdit);
 formEditValidator.enableValidation();

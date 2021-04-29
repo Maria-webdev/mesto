@@ -30,7 +30,7 @@ function openPopupAdd() {
 }
 
 function closePopupEsc(evt) {
-  if (evt.keyCode === 27) {
+  if (evt.key === 'Escape') {
     const popup = document.querySelector(".popup_visible");
     closePopup(popup);
   }
@@ -53,7 +53,7 @@ function closePopup(popup) {
   document.removeEventListener("keydown", closePopupEsc);
 }
 
-function handleFormSubmit(evt) {
+function handleFormSubmitPopupEdit(evt) {
   evt.preventDefault();
 
   nameInput.textContent = nameForm.value;
@@ -106,7 +106,7 @@ closeAddBtn.addEventListener("click", () => closePopup(popupAdd));
 closePicBtn.addEventListener("click", () => closePopup(popupPic));
 closeEditBtn.addEventListener("click", () => closePopup(popupEdit));
 
-popupFormEdit.addEventListener("submit", handleFormSubmit);
+popupFormEdit.addEventListener("submit", handleFormSubmitPopupEdit);
 
 
 closePopupOverlay();

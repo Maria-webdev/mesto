@@ -29,8 +29,8 @@ export class Card {
     }
   
     _deleteBtnClick() {
-      this._element.querySelector(".element__delete-button");
       this._element.remove();
+      this._element = null;
     }
   
     generateCard() {

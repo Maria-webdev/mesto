@@ -1,3 +1,38 @@
+const addIcon = new URL('../images/add-icon.svg', import.meta.url);
+const headerLogo = new URL('../images/header__logo.svg', import.meta.url);
+const editButton = new URL('../images/profile/__adit-button/profile__adit-button.svg', import.meta.url);
+const deleteButton = new URL('../images/element/__delete-button/element__delete-button.svg', import.meta.url);
+const likeButton = new URL('../images/element/__like-button/element__like-button.svg', import.meta.url);
+const closeButton = new URL('../images/popup/__close-button/popup__close-button.svg', import.meta.url);
+const addButton = new URL('../images/__like-button/element__like-button.svg', import.meta.url);
+const likeButtonActive = new URL('../images/profile/__add-button/profile__add-button-center.svg', import.meta.url);
+const avatar = new URL('../images/profile/__avatar/profile__avatar.svg', import.meta.url);
+const pic1 = new URL('../images/element/__pic/Aachen_Germany_Imperial-Cathedral.png', import.meta.url);
+const pic2 = new URL('../images/element/__pic/Gartenbrunnen_der_Würzburger_Residenz.png', import.meta.url);
+const pic3 = new URL('../images/element/__pic/Koelner_Dom.png', import.meta.url);
+const pic4 = new URL('../images/element/__pic/Schloss_Augustusburg_Bruehl.png', import.meta.url);
+const pic5 = new URL('../images/element/__pic/Speyer-Cathedral.png', import.meta.url);
+const pic6 = new URL('../images/element/__pic/Trier_Porta_Nigra_BW_3.png', import.meta.url);
+
+const iconList = [
+  // меняем исходные пути на переменные
+  { name: 'Add Icon', link: headerLogo },
+  { name: 'Add Icon', link: editButton },
+  { name: 'Add Icon', link: deleteButton },
+  { name: 'Add Icon', link: likeButton },
+  { name: 'Add Icon', link: closeButton },
+  { name: 'Add Icon', link: addButton },
+  { name: 'Add Icon', link: likeButtonActive },
+  { name: 'Add Icon', link: avatar },
+  { name: 'Add Icon', link: Аахен },
+  { name: 'Add Icon', link: Вюрцбург },
+  { name: 'Add Icon', link: Кёльн },
+  { name: 'Add Icon', link: Аугсбург },
+  { name: 'Add Icon', link: Шпейер },
+  { name: 'Add Icon', link: Трир },
+]; 
+
+import './index.css';
 import { initialCards } from "../scripts/initial-сards.js";
 import { popupEdit, popupAdd, popupPic, popups, popup, popupFormEdit, popupFormAdd, closeEditBtn, closeAddBtn,
          closePicBtn, closeBtn, editBtn, addBtn, nameInput, aboutInput, nameForm, aboutForm, formEdit, formAdd,

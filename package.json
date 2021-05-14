@@ -1,0 +1,26 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "**Проект** - платформа, где люди делятся фотографиями из разных мест. Похожа на соц.сеть (возможность добавлять новые фотографии, ставить лайки)\r Цель проекта - освоить и закрепить на практике: основы JS, DOM.\r В проекте **применены** _адаптивная верстка_, _Grid_, _БЭМ_, _Flex_, _разные методы позиционирования_, соблюдена _семантика_.\r Реализованы возможности редактирования данных профиля, загрузки новых фотографий через формы popup, валидация форм, закрытие модальных окон черех esc и нажатие на область вне модального окна. Также фотографии можно увеличивать через popup и ставить лайки. \r Применены принципы ООП",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && webpack",
+    "dev": "webpack serve"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maria-webdev/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maria-webdev/mesto/issues"
+  },
+  "homepage": "https://github.com/Maria-webdev/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

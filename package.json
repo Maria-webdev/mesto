@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Maria-webdev/mesto#readme",
   "devDependencies": {
     "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.0",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
@@ -32,6 +33,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "core-js": "^3.12.1"
+    "core-js": "^3.12.1",
+    "latest": "^0.2.0"
   }
 }

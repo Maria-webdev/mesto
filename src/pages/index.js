@@ -1,6 +1,5 @@
 
 
-
 import './index.css';
 import { initialCards } from "../utils/initial-сards.js";
 import { popupEdit, popupAdd, popupPic, popups, popup, popupFormEdit, popupFormAdd, closeEditBtn, closeAddBtn,

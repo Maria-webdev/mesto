@@ -1,5 +1,6 @@
 const presets = [
-    ['@babel/env', { // какой пресет использовать
+    ['@babel/env', 
+    "stage-3", { // какой пресет использовать
       targets: { // какие версии браузеров поддерживать
         edge: '17',
         ie: '11',
@@ -15,3 +16,10 @@ const presets = [
   ];
   
   module.exports = { presets }; 
+
+  {
+    presets: [
+        "@babel/preset-env",
+        "stage-3"
+    ]
+}

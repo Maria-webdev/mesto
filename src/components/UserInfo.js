@@ -1,6 +1,9 @@
 export class UserInfo {
-    constructor() {}
-  
+    constructor(name, caption) {
+      this._name = name;
+      this._caption = caption
+    }
+    
     getUserInfo() {
       const name = this._name.textContent;
       const caption = this._caption.textContent;

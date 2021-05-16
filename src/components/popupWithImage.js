@@ -1,8 +1,8 @@
-import { popup } from "../components/popup.js";
+import { Popup } from "./Popup.js";
 
-export class popupWithImage extends popup {
+export class PopupWithImage extends Popup {
   constructor(popup, photoImage, photoAlt) {
-    super(popup);
+    super(Popup);
     this._text = photoImage;
     this._link = photoAlt;
   }

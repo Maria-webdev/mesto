@@ -8,9 +8,9 @@ import { popupEdit, popupAdd, popupPic, popups, popup, popupFormEdit, popupFormA
 import { Card } from "../components/Card.js";
 import { formValidator } from "../components/formValidator.js";
 import { UserInfo } from "../components/UserInfo.js";
-import { popup } from "../components/popup.js";
-import { popupWithForm } from "../components/popupWithForm.js";
-import { popupWithImage, popupWithImage } from "../components/popupWithImage.js";
+import { Popup } from "../components/Popup.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Section } from "../components/Section.js";
 
 const formEditValidator = new formValidator(validationElements, popupFormEdit);
@@ -18,22 +18,21 @@ formEditValidator.enableValidation();
 const formAddValidator = new formValidator(validationElements, popupFormAdd);
 formAddValidator.enableValidation();
 
-const userInfo = new userInfo(nameInput, aboutInput);
-const popupImage = new popupWithImage(popupPic, pic, picTitle);
-const popupAddForm = new popupWithForm(popupAdd, {
+const userInfo = new UserInfo(nameInput, aboutInput);
+const popupImage = new PopupWithImage(popupPic, pic, picTitle);
+const popupAddForm = new PopupWithForm(popupAdd, {
   submitHandler: (data) => {
     const element = createCard({
       name: data.place,
       link: data.URL
     })
     renderList.addItem(element);
-    
     popupAddForm(close);
   }
 
 });
 
-const popupEditForm = new popupWithForm(popupEdit, {
+const popupEditForm = new PopupWithForm(popupEdit, {
   submitHandler: (data) => {
     userInfo.setUserInfo(data);
     popupEditForm.close();

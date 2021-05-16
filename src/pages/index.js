@@ -67,7 +67,6 @@ const renderList = new Section ({
   }}, '.elements'
 );
 
-
 renderList.renderItems();
 popupImage.setEventListeners();
 popupAddForm.setEventListeners();

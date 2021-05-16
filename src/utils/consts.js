@@ -17,14 +17,14 @@ const pic = document.querySelector(".popup-pic__image");
 const picTitle = document.querySelector(".popup-pic__title");
 
 const validationElements = {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    inputErrorClass: "popup__input_type_error",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_inactive",
-    errorClass: "popup__error_visible",
-    errorMessageInput: "Вы пропустили это поле.",
-    errorMessageUrl: "Введите адрес сайта.",
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  inputErrorClass: "popup__input_type_error",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_inactive",
+  errorClass: "popup__error_visible",
+  errorMessageInput: "Вы пропустили это поле.",
+  errorMessageUrl: "Введите адрес сайта.",
   };
 
 export { popupEdit, popupAdd, popupPic, popupFormEdit, popupFormAdd, editBtn, addBtn, nameInput, aboutInput, nameForm, aboutForm,

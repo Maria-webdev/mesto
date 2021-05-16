@@ -1,17 +1,17 @@
 export class UserInfo {
-    constructor(name, caption) {
+    constructor(name, about) {
       this._name = name;
-      this._caption = caption
+      this._about = about
     }
     
     getUserInfo() {
       const name = this._name.textContent;
-      const caption = this._caption.textContent;
-      return { name, caption };
+      const about = this._about.textContent;
+      return { name, about };
     }
   
     setUserInfo(data) {
       this._name.textContent = data.name;
-      this._caption.textContent = data.caption;
+      this._about.textContent = data.about;
     }
 }

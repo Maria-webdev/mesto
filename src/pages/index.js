@@ -40,7 +40,7 @@ const popupEditForm = new PopupWithForm(popupEdit, {
 });
 
 function handleFormSubmitPopupEdit() {
-  const getProfileInfo = getUserInfo.getUserInfo();
+  const getProfileInfo = userInfo.getUserInfo();
   nameForm.value = getProfileInfo.name;
   aboutForm.value = getProfileInfo.caption;
   formEditValidator.clearValidationState();

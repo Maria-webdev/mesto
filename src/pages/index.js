@@ -79,5 +79,5 @@ popupImage.setEventListeners();
 popupAddForm.setEventListeners();
 popupEditForm.setEventListeners();
 
-AddBtn.addEventListener("click", handleFormSubmitPopupAdd);
-EditBtn.addEventListener("click", handleFormSubmitPopupEdit);
+addBtn.addEventListener("click", handleFormSubmitPopupAdd);
+editBtn.addEventListener("click", handleFormSubmitPopupEdit);

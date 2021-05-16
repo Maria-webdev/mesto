@@ -9,16 +9,16 @@ export class PopupWithForm extends Popup {
 
   _getInputValues() {
     this._inpValue = {};
-    this._inoutList = this._form.querySelectorAll(".popup__input");
-    this._inputList.forEach((input) => (this.inputValue[input.name] = input.value));
-    return this.inpValue;
+    this._inputList = this._form.querySelectorAll(".popup__input");
+    this._inputList.forEach((input) => (this._inpValue[input.name] = input.value));
+    return this._inpValue;
   }
 
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._submitHandler(this._getInputValues);
+      this._submitHandler(this._getInputValues());
     });
   }
 

@@ -3,14 +3,14 @@ import { Popup } from "./Popup.js";
 export class PopupWithImage extends Popup {
   constructor(popup, photoImage, photoAlt) {
     super(popup);
-    this._text = photoImage;
-    this._link = photoAlt;
+    this._url = photoImage;
+    this._title = photoAlt;
   }
 
-  open(link, text) {
+  open({link, name}) {
+    this._title.textContent = name;
+    this._url.src = link;
+    this._url.alt = name;
     super.open();
-    this._text.textContent = text;
-    this._link.src = link;
-    this._link.alt = text;
   }
 }

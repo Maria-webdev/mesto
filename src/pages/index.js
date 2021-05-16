@@ -20,16 +20,16 @@ formAddValidator.enableValidation();
 
 const userInfo = new UserInfo(nameInput, aboutInput);
 const popupImage = new PopupWithImage(popupPic, pic, picTitle);
+
 const popupAddForm = new PopupWithForm(popupAdd, {
   submitHandler: (data) => {
     const element = createCard({
-      name: data.place,
-      link: data.URL
+      name: data.name,
+      link: data.caption
     })
     renderList.addItem(element);
-    popupAddForm(close);
+    popupAddForm.close();
   }
-
 });
 
 const popupEditForm = new PopupWithForm(popupEdit, {
@@ -52,7 +52,6 @@ function handleFormSubmitPopupAdd() {
   popupAddForm.open();
 }
 
-
 function createCard(item) {
   const card = new Card(item, "#element-template", {
     handleCardClick: (link, name) => {
@@ -67,11 +66,9 @@ function createCard(item) {
 const renderList = new Section ({
   items: initialCards,
   renderer: (item) => {
-  initialCards.forEach((item) => {
     const cardElement = createCard(item);
     renderList.addItem(cardElement);
-  })}}, '.elements'
-
+  }}, '.elements'
 );
 
 renderList.renderItems();

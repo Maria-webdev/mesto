@@ -25,9 +25,10 @@ export class Popup {
         if (evt.target.classList.contains("popup_visible")) {
           this.close(this._popup);
         }
-        if (evt.target.classList.contains("popup_close-button")) {
+        if (evt.target.classList.contains('popup__close-button')) {
           this.close(this._popup);
         }
+        
       });
     }
   }

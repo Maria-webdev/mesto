@@ -1,14 +1,10 @@
-
-
 import './index.css';
 import { initialCards } from "../utils/initial-сards.js";
-import { popupEdit, popupAdd, popupPic, popups, popup, popupFormEdit, popupFormAdd, closeEditBtn, closeAddBtn,
-         closePicBtn, closeBtn, editBtn, addBtn, nameInput, aboutInput, nameForm, aboutForm, formEdit, formAdd,
-         elements, placeInput, linkInput, pic, picTitle, validationElements} from "../utils/consts.js";
+import { popupEdit, popupAdd, popupPic, popupFormEdit, popupFormAdd, editBtn, addBtn,
+         nameInput, aboutInput, nameForm, aboutForm, pic, picTitle, validationElements} from "../utils/consts.js";
 import { Card } from "../components/Card.js";
 import { formValidator } from "../components/formValidator.js";
 import { UserInfo } from "../components/UserInfo.js";
-import { Popup } from "../components/Popup.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Section } from "../components/Section.js";
@@ -24,10 +20,10 @@ const popupImage = new PopupWithImage(popupPic, pic, picTitle);
 const popupAddForm = new PopupWithForm(popupAdd, {
   submitHandler: (data) => {
     const element = createCard({
-      name: data.name,
-      link: data.caption
+      name: data.place,
+      link: data.URL
     })
-    renderList.addItem(element);
+    renderList.addNewItem(element);
     popupAddForm.close();
   }
 });
@@ -55,7 +51,7 @@ function handleFormSubmitPopupAdd() {
 function createCard(item) {
   const card = new Card(item, "#element-template", {
     handleCardClick: (link, name) => {
-   popupImage.open({link, name});
+      popupImage.open({link, name});
     }
   });
   const cardElement = card.generateCard();
@@ -70,6 +66,7 @@ const renderList = new Section ({
     renderList.addItem(cardElement);
   }}, '.elements'
 );
+
 
 renderList.renderItems();
 popupImage.setEventListeners();

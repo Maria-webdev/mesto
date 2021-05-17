@@ -48,26 +48,27 @@ function handleFormSubmitPopupAdd() {
   popupAddForm.open();
 }
 
-function createCard(item) {
-  const card = new Card(item, "#element-template", {
-    handleCardClick: (link, name) => {
-      popupImage.open({link, name});
-    }
+function createCard(item) { //ф-ция создания карточек
+  const card = new Card(item, "#element-template", {//создаем экземплряр класса card, 
+    //принтмаем аргументы: некий item, "ячейка", в html, в  которую новая карточка попадет, ф-ция открытия модалки с карточкой
+    handleCardClick: (link, name) => {//вот тут с синтаксисом непонятно, почему с ":"
+      popupImage.open({link, name});//открываем модалку с фотографией, на вход прин-ся объект, состоящий из link и name
+    }//link и name - const в классе card
   });
-  const cardElement = card.generateCard();
+  const cardElement = card.generateCard();// кладем в конст результат работы ф-ции generateCard класса card для какой-то item
 
-  return cardElement;
+  return cardElement;//возвращаем полученныую конст
 }
 
-const renderList = new Section ({
-  items: initialCards,
-  renderer: (item) => {
-    const cardElement = createCard(item);
-    renderList.addItem(cardElement);
-  }}, '.elements'
+const renderList = new Section ({// отрисовываем первые 6 карточек
+  items: initialCards,//берем items из файла initialcards
+  renderer: (item) => {//на вход принимает item
+    const cardElement = createCard(item);//создаем карточку
+    renderList.addItem(cardElement);//добавляем созданные карточки в dom(?) эл-т с селектором cardElement
+  }}, '.elements'//
 );
 
-renderList.renderItems();
+renderList.renderItems();// вызываем ф-цию отрисовки карточек
 popupImage.setEventListeners();
 popupAddForm.setEventListeners();
 popupEditForm.setEventListeners();

@@ -10,8 +10,8 @@ export class UserInfo {
       return { name, about };
     }
   
-    setUserInfo(data) {
-      this._name.textContent = data.name;
-      this._about.textContent = data.about;
+    setUserInfo(name, about) {
+      this._name.textContent = name;
+      this._about.textContent = about;
     }
 }

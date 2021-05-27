@@ -8,6 +8,24 @@ import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Section } from "../components/Section.js";
+import { Api } from "../components/Api.js";
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-24',
+  headers: {
+  authorization: '9d5a0019-b096-496e-ade0-699f2874ec7a',
+  'Content-Type': 'application/json'
+  }
+})
+
+api.getInitialCards()
+ .then(data => renderList.renderItems(data))
+ .catch(result => console.log(`${result} при загрузке карточек с сервера`))
+
+ 
+api.getUserInfo()
+  .then(data => userInfo.setUserInfo(data.name, data.about))
+  .catch(result => console.log(`${result} при загрузке данных профиля`))
 
 const formEditValidator = new formValidator(validationElements, popupFormEdit);
 formEditValidator.enableValidation();
@@ -19,20 +37,23 @@ const popupImage = new PopupWithImage(popupPic, pic, picTitle);
 
 const popupAddForm = new PopupWithForm(popupAdd, {
   submitHandler: (data) => {
-    const element = createCard({
-      name: data.place,
-      link: data.URL
-    })
-    renderList.addNewItem(element);
+    api.addCard(data.place, data.url)
+      .then(result => {
+        const element = createCard(result)
+        renderList.addNewItem(element)
+  })
+      .catch(result => console.log(`${result} при загрузке новой карточки`))
     popupAddForm.close();
   }
 });
 
 const popupEditForm = new PopupWithForm(popupEdit, {
   submitHandler: (data) => {
-    userInfo.setUserInfo(data);
-    popupEditForm.close();
-  }
+    api.editUserInfo(data.name, data.about)
+      .then(result => userInfo.setUserInfo(result.name, result.about))
+      .catch(result => console.log(`${result} при редактировании данных профиля`))
+      popupEditForm.close();
+    }
 });
 
 function handleFormSubmitPopupEdit() {
@@ -60,15 +81,14 @@ function createCard(item) { //ф-ция создания карточек
   return cardElement;//возвращаем полученныую конст
 }
 
-const renderList = new Section ({// отрисовываем первые 6 карточек
-  items: initialCards,//берем items из файла initialcards
+const renderList = new Section ({
   renderer: (item) => {//на вход принимает item
     const cardElement = createCard(item);//создаем карточку
     renderList.addItem(cardElement);//добавляем созданные карточки в dom(?) эл-т с селектором cardElement
   }}, '.elements'//
 );
 
-renderList.renderItems();// вызываем ф-цию отрисовки карточек
+
 popupImage.setEventListeners();
 popupAddForm.setEventListeners();
 popupEditForm.setEventListeners();

@@ -1,9 +1,14 @@
 export class Card { //создает шаблок карточки и сами карточки
-  constructor({name, link}, cardSelector, {handleCardClick}) {//принимаем название фотографии, ссылку на нее, 
+  constructor({name, link, likes, owner, _id}, cardSelector, {handleCardClick, handleCardDelete, handleCardLike}, userId) {//принимаем название фотографии, ссылку на нее, 
     this._title = name; //вот "наш" name
     this._image = link;// "Наш" link
     this._cardSelector = cardSelector;//селектор шаблона карточки
     this._handleCardClick = handleCardClick;//ф-ция открытия модалки(?)
+    this._element = this._getTemplate();//сохраняем пустой шаблон
+    this._likes = likes;
+    this._owner = owner._id;
+    this._userId = userId;
+    this._likesCounter = this._element.querySelector('.element__count');
   }
 
   _getTemplate() {//создаем шаблон карточки
@@ -32,14 +37,15 @@ export class Card { //создает шаблок карточки и сами �
   }
 
   _deleteBtnClick() {
-    this._element.remove();//удаляем карточку 
-    this._element = null;//онуляем содероимое
+    this._openPopupDelete()
   }
 
   generateCard() {
-    this._element = this._getTemplate();//сохраняем пустой шаблон
     this._setEventListeners();//применяем  слушатели
-
+    this._likesCounter.textContent = this._likes.length;
+    if(this._userId === this._owner) {
+      this._element.querySelector('.element__delete-button').classList.add('element__delete-button_active');
+    }
     this._element.querySelector(".element__title").textContent = this._title; //сохраняем в текст контент карточки 
     //в "ячейку" с селектором element__title сохраняем title
     this._element.querySelector(".element__title").alt = this._title;

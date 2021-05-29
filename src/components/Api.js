@@ -68,4 +68,12 @@ export class Api {
       })
       .then(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
     }
+
+    deleteCard(cardId) {
+      return fetch(`${this._baseUrl}/card/${cardId}`, {
+        method: 'DELETE',
+        headers: this._headers,
+      })
+      .then(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
+    }
 }

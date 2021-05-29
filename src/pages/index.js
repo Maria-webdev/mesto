@@ -40,7 +40,7 @@ const popupImage = new PopupWithImage(popupPic, pic, picTitle);
 
 const popupAddForm = new PopupWithForm(popupAdd, {
   submitHandler: (data) => {
-    const button = document.querySelector('.popup__button');
+    const button = document.querySelector('.popup__button_add');
     button.textContent = 'Создать';
     api.addCard(data.place, data.url)
       .then(result => {
@@ -55,7 +55,7 @@ const popupAddForm = new PopupWithForm(popupAdd, {
 
 const popupEditForm = new PopupWithForm(popupEdit, {
   submitHandler: (data) => {
-    const button = document.querySelector('.popup__button');
+    const button = document.querySelector('.popup__button_edit');
     button.textContent = 'Сохранение...';
     api.editUserInfo(data.name, data.about)
       .then(result => userInfo.setUserInfo(result.name, result.about))
@@ -67,7 +67,7 @@ const popupEditForm = new PopupWithForm(popupEdit, {
 
 const popupAva = new PopupWithForm(popupAvatar, {
   submitHandler: (data) => {
-    const button = document.querySelector('.popup__button');
+    const button = document.querySelector('.popup__button_avatar');
     button.textContent = 'Сохранение...';
     api.newAvatar(data.avatar)
       .then(result => {
@@ -106,9 +106,25 @@ function createCard(item) { //ф-ция создания карточек
     handleCardDelete: () => {
 
     },
-    handleCardLike: () => {
-
-    },
+    handleCardLike: (card) => {
+      if(card.querySelector('.element__like-button').classList.contains('element__like-button_active')) {
+        api.handleDeleteLike(card.id)
+        .then(result => {
+          card.querySelector('.element__like-button').classList.remove('element__like-button_active')
+          card.querySelector('.element__count').textContent = result.likes.length
+        })
+        .catch(result => console.log(`${result} при снятии лайка`))
+      }
+      else {
+        api.handleLikeCard(card.id)
+          .then(result => {
+            card.querySelector('.element__like-button').classList.add('element__like-button_active')
+            card.querySelector('.element__count').textContent = result.likes.length
+          })
+          .catch(result => console.log(`${result} при постановке лайка`))
+        }
+      }
+    
     //link и name - const в классе card
   }, userId);
   const cardElement = card.generateCard();// кладем в конст результат работы ф-ции generateCard класса card для какой-то item

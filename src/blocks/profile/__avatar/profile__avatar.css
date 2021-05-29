@@ -10,10 +10,6 @@
   opacity: 0.2 !important;
 }
   
-.profile__avatar-edit-button-pencil:hover ~ .profile__avatar {
-  opacity: 0.2 !important;
-}
-  
 .profile__avatar-edit-button:hover ~ .profile__avatar {
   opacity: 0.2 !important;
 }

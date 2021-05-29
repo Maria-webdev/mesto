@@ -2,15 +2,35 @@
     margin: 0;
     margin-right: 30px;
     padding: 0;
-    display: flex;
     width: 120px;
     height: 120px;
-    position: relative;
     background-color: #000;
     cursor: pointer;
     border-radius: 50%;
     overflow: hidden;
     border: none;
+    background-size: contain;
+    position: relative;
+}
+
+.profile__avatar-edit-button:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: url('../../../images/profile/__avatar-edit/avatar-edit.png');
+  background-size: 40px 40px;
+  opacity: 0;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-repeat: no-repeat;
+}
+
+.profile__avatar-edit-button:hover:after {
+  cursor: pointer;
+  opacity: 1;
 }
 
 @media screen and (max-width: 767px) {

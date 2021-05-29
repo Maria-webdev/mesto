@@ -52,4 +52,20 @@ export class Api {
       })
       .then(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
     }
+
+    handleLikeCard(cardId) {
+      return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        method: 'PUT',
+        headers: this._headers,
+      })
+      .then(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
+    }
+
+    handleDeleteLike(cardId) {
+      return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        method: 'DELETE',
+        headers: this._headers,
+      })
+      .then(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
+    }
 }

@@ -80,6 +80,18 @@ const popupAva = new PopupWithForm(popupAvatar, {
     }
 });
 
+const popupDel = new PopupDelete(popupDelete, {
+  submitHandler: (cardId) => {
+    api.deleteCard(popupDel.cardId().id)
+      .then(() => {
+        popupDel.cardId().remove();
+        popupDel.close();
+      })
+      .catch(result => console.log(`${result} при редактировании фото профиля`))
+      .finally(() => { button.textContent = 'Сохранить' })
+    }
+});
+
 function handlePopupAvatar() {
   popupAva.open();
 }
@@ -104,8 +116,8 @@ function createCard(item) { //ф-ция создания карточек
     handleCardClick: (link, name) => {//вот тут с синтаксисом непонятно, почему с ":"
       popupImage.open({link, name});//открываем модалку с фотографией, на вход прин-ся объект, состоящий из link и name
     },
-    handleCardDelete: () => {
-
+    handleCardDelete: (cardId) => {
+      popupDelete.open(cardId); 
     },
     handleCardLike: (card) => {
       if(card.querySelector('.element__like-button').classList.contains('element__like-button_active')) {

@@ -87,7 +87,7 @@ const popupDel = new PopupDelete(popupDelete, {
         popupDel.cardId().remove();
         popupDel.close();
       })
-      .catch(result => console.log(`${result} при редактировании фото профиля`))
+      .catch(result => console.log(`${result} при удалении карточки`))
       .finally(() => { button.textContent = 'Сохранить' })
     }
 });

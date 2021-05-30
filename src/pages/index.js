@@ -158,6 +158,7 @@ popupImage.setEventListeners();
 popupAddForm.setEventListeners();
 popupEditForm.setEventListeners();
 popupAva.setEventListeners();
+popupDel.setEventListeners();
 
 addBtn.addEventListener("click", handleFormSubmitPopupAdd);
 editBtn.addEventListener("click", handleFormSubmitPopupEdit);

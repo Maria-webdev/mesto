@@ -42,15 +42,15 @@ const popupImage = new PopupWithImage(popupPic, pic, picTitle);
 const popupAddForm = new PopupWithForm(popupAdd, {
   submitHandler: (data) => {
     const button = document.querySelector('.popup__button_add');
-    button.textContent = 'Создать';
+    button.textContent = 'Сохранение...';
     api.addCard(data.place, data.url)
       .then(result => {
         const element = createCard(result)
         renderList.addNewItem(element)
-  })
+        popupAddForm.close()
+     })
       .catch(result => console.log(`${result} при загрузке новой карточки`))
       .finally(() => { button.textContent = 'Сохранить' })
-    popupAddForm.close();
   }
 });
 
@@ -59,10 +59,12 @@ const popupEditForm = new PopupWithForm(popupEdit, {
     const button = document.querySelector('.popup__button_edit');
     button.textContent = 'Сохранение...';
     api.editUserInfo(data.name, data.about)
-      .then(result => userInfo.setUserInfo(result.name, result.about))
+      .then(result => {
+        userInfo.setUserInfo(result.name, result.about)
+        popupEditForm.close()
+      })
       .catch(result => console.log(`${result} при редактировании данных профиля`))
       .finally(() => { button.textContent = 'Сохранить' })
-      popupEditForm.close();
     }
 });
 
@@ -88,7 +90,6 @@ const popupDel = new PopupDelete(popupDelete, {
         popupDel.close();
       })
       .catch(result => console.log(`${result} при удалении карточки`))
-      .finally(() => { button.textContent = 'Сохранить' })
     }
 });
 
@@ -117,7 +118,7 @@ function createCard(item) { //ф-ция создания карточек
       popupImage.open({link, name});//открываем модалку с фотографией, на вход прин-ся объект, состоящий из link и name
     },
     handleCardDelete: (cardId) => {
-      popupDelete.open(cardId); 
+      popupDel.open(cardId); 
     },
     handleCardLike: (card) => {
       if(card.querySelector('.element__like-button').classList.contains('element__like-button_active')) {

@@ -9,7 +9,7 @@ export class Card { //создает шаблок карточки и сами �
     this._owner = owner._id;
     this._userId = userId;
     this._likesCounter = this._element.querySelector('.element__count');
-    this._popupDelete = handleCardDelete;
+    this._openPopupDelete = handleCardDelete;
     this._toggleLike = handleCardLike;
     this._id = _id;
   }
@@ -40,7 +40,7 @@ export class Card { //создает шаблок карточки и сами �
   }
 
   _deleteBtnClick() {
-    this._openPopupDelete()
+    this._openPopupDelete(this._element)
   }
 
   generateCard() {

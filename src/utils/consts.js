@@ -2,7 +2,7 @@ const popupEdit = document.querySelector(".popup_edit");
 const popupAdd = document.querySelector(".popup_add");
 const popupPic = document.querySelector(".popup-pic");
 const popupAvatar = document.querySelector(".popup_avatar");
-const popupDelete = document.querySelector(".ppopup_delete");
+const popupDelete = document.querySelector(".popup_delete");
 
 const popupFormEdit = document.querySelector(".popup__form_type_edit");
 const popupFormAdd = document.querySelector(".popup__form_type_add");

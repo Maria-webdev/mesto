@@ -19,16 +19,14 @@ const api = new Api({
   }
 })
 
-api.getInitialCards()
-  .then(data => renderList.renderItems(data))
-  .catch(result => console.log(`${result} при загрузке карточек с сервера`))
- 
-api.getUserInfo()
+Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(data => {
     userInfo.setUserInfo(data.name, data.about, data._id)
     userInfo.setUserAvatar(data.avatar)
+    renderList.renderItems(data)
   })
-  .catch(result => console.log(`${result} при загрузке данных профиля`))
+  .catch(result => console.log(`${result} при загрузке данных с сервера`))
+
 
 const formEditValidator = new FormValidator(validationElements, popupFormEdit);
 formEditValidator.enableValidation();

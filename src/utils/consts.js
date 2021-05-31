@@ -6,6 +6,7 @@ const popupDelete = document.querySelector(".popup_delete");
 
 const popupFormEdit = document.querySelector(".popup__form_type_edit");
 const popupFormAdd = document.querySelector(".popup__form_type_add");
+const popupFormAvatar = document.querySelector(".popup__form_type_avatar");
 
 const editBtn = document.querySelector(".profile__edit-button");
 const addBtn = document.querySelector(".profile__add-button");
@@ -33,5 +34,5 @@ const validationElements = {
   errorMessageUrl: "Введите адрес сайта.",
   };
 
-export { popupEdit, popupAdd, popupPic, popupAvatar, popupDelete, popupFormEdit, popupFormAdd, editBtn, addBtn, deleteBtn, nameInput, aboutInput, nameForm, aboutForm,
+export { popupEdit, popupAdd, popupPic, popupAvatar, popupDelete, popupFormEdit, popupFormAdd, popupFormAvatar, editBtn, addBtn, deleteBtn, nameInput, aboutInput, nameForm, aboutForm,
          pic, picTitle, profileAvatar, profileImage, validationElements };

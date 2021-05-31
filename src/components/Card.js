@@ -40,7 +40,7 @@ export class Card { //создает шаблок карточки и сами �
   }
 
   _deleteBtnClick() {
-    this._openPopupDelete(this._element)
+    this._openPopupDelete(this._element);
   }
 
   generateCard() {
@@ -57,11 +57,26 @@ export class Card { //создает шаблок карточки и сами �
     this._element.id = this._id;
     this._element.querySelector(".element__title").textContent = this._title; //сохраняем в текст контент карточки 
     //в "ячейку" с селектором element__title сохраняем title
-    this._element.querySelector(".element__title").alt = this._title;
+    this._element.querySelector(".element__pic").alt = this._title;
     //аналогично
     this._element.querySelector(".element__pic").src = this._image; //link
     //аналогично
 
     return this._element;//возвращаем рез
   }
+
+  delCard() {
+    this._element.remove();
+  }
+
+  removeLike() {
+    this._element.querySelector('.element__like-button').classList.remove('element__like-button_active');
+    this._element.querySelector('.element__count').textContent = result.likes.length;
+  }
+
+  addLike() {
+    this._element.querySelector('.element__like-button').classList.add('element__like-button_active');
+    this._element.querySelector('.element__count').textContent = result.likes.length;
+  }
+
 }

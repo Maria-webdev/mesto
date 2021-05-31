@@ -1,9 +1,9 @@
 import './index.css';
 import { initialCards } from "../utils/initial-сards.js";
-import { popupEdit, popupAdd, popupPic, popupAvatar, popupDelete, popupFormEdit, popupFormAdd, editBtn, addBtn, deleteBtn,
+import { popupEdit, popupAdd, popupPic, popupAvatar, popupDelete, popupFormEdit, popupFormAdd, popupFormAvatar, editBtn, addBtn, deleteBtn,
          nameInput, aboutInput, nameForm, aboutForm, pic, picTitle, profileAvatar, profileImage, validationElements} from "../utils/consts.js";
 import { Card } from "../components/Card.js";
-import { formValidator } from "../components/formValidator.js";
+import { FormValidator } from "../components/FormValidator.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
@@ -20,9 +20,8 @@ const api = new Api({
 })
 
 api.getInitialCards()
- .then(data => renderList.renderItems(data))
- .catch(result => console.log(`${result} при загрузке карточек с сервера`))
-
+  .then(data => renderList.renderItems(data))
+  .catch(result => console.log(`${result} при загрузке карточек с сервера`))
  
 api.getUserInfo()
   .then(data => {
@@ -31,10 +30,12 @@ api.getUserInfo()
   })
   .catch(result => console.log(`${result} при загрузке данных профиля`))
 
-const formEditValidator = new formValidator(validationElements, popupFormEdit);
+const formEditValidator = new FormValidator(validationElements, popupFormEdit);
 formEditValidator.enableValidation();
-const formAddValidator = new formValidator(validationElements, popupFormAdd);
+const formAddValidator = new FormValidator(validationElements, popupFormAdd);
 formAddValidator.enableValidation();
+const formAvatarValidator = new FormValidator(validationElements, popupFormAvatar);
+formAvatarValidator.enableValidation();
 
 const userInfo = new UserInfo(nameInput, aboutInput, profileImage);
 const popupImage = new PopupWithImage(popupPic, pic, picTitle);
@@ -85,15 +86,16 @@ const popupAva = new PopupWithForm(popupAvatar, {
 const popupDel = new PopupDelete(popupDelete, {
   submitHandler: (cardId) => {
     api.deleteCard(popupDel.cardId().id)
-      .then(() => {
-        popupDel.cardId().remove();
-        popupDel.close();
+      .then((res) => {
+        card.delCard()
+        popupDel.close()
       })
       .catch(result => console.log(`${result} при удалении карточки`))
     }
 });
 
 function handlePopupAvatar() {
+  formAvatarValidator.clearValidationState();
   popupAva.open();
 }
 
@@ -123,18 +125,12 @@ function createCard(item) { //ф-ция создания карточек
     handleCardLike: (card) => {
       if(card.querySelector('.element__like-button').classList.contains('element__like-button_active')) {
         api.handleDeleteLike(card.id)
-        .then(result => {
-          card.querySelector('.element__like-button').classList.remove('element__like-button_active')
-          card.querySelector('.element__count').textContent = result.likes.length
-        })
+        .then(result => card.removeLike())
         .catch(result => console.log(`${result} при снятии лайка`))
       }
       else {
         api.handleLikeCard(card.id)
-          .then(result => {
-            card.querySelector('.element__like-button').classList.add('element__like-button_active')
-            card.querySelector('.element__count').textContent = result.likes.length
-          })
+          .then(result => card.addLike())
           .catch(result => console.log(`${result} при постановке лайка`))
         }
       }

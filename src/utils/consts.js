@@ -31,7 +31,7 @@ const validationElements = {
   inactiveButtonClass: "popup__button_inactive",
   errorClass: "popup__error_visible",
   errorMessageInput: "Вы пропустили это поле.",
-  errorMessageUrl: "Введите адрес сайта.",
+  errorMessageUrl: "Введите адрес ссылки.",
   };
 
 export { popupEdit, popupAdd, popupPic, popupAvatar, popupDelete, popupFormEdit, popupFormAdd, popupFormAvatar, editBtn, addBtn, deleteBtn, nameInput, aboutInput, nameForm, aboutForm,

@@ -20,10 +20,10 @@ const api = new Api({
 })
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(data => {
-    userInfo.setUserInfo(data.name, data.about, data._id)
-    userInfo.setUserAvatar(data.avatar)
-    renderList.renderItems(data)
+  .then(([profileInfo, cards]) => {
+    userInfo.setUserInfo(profileInfo.name, profileInfo.about, profileInfo._id)
+    userInfo.setUserAvatar(profileInfo.avatar)
+    renderList.renderItems(cards)
   })
   .catch(result => console.log(`${result} при загрузке данных с сервера`))
 
@@ -81,15 +81,15 @@ const popupAva = new PopupWithForm(popupAvatar, {
     }
 });
 
-const popupDel = new PopupDelete(popupDelete, {
-  submitHandler: (cardId) => {
-    api.deleteCard(popupDel.cardId().id)
-      .then((res) => {
-        card.delCard()
-        popupDel.close()
-      })
-      .catch(result => console.log(`${result} при удалении карточки`))
-    }
+const popupDel = new PopupDelete(popupDelete, { 
+  submitHandler: (cardId) => { 
+    api.deleteCard(popupDel.cardId().id) 
+      .then(() => { 
+        popupDel.cardId().remove(); //ИЗМЕНИТЬ НА ПУБЛИЧНЫЙ МЕТОД В CARD
+        popupDel.close(); 
+      }) 
+      .catch(result => console.log(`${result} при удалении карточки`)) 
+    } 
 });
 
 function handlePopupAvatar() {
@@ -120,15 +120,15 @@ function createCard(item) { //ф-ция создания карточек
     handleCardDelete: (cardId) => {
       popupDel.open(cardId); 
     },
-    handleCardLike: (card) => {
-      if(card.querySelector('.element__like-button').classList.contains('element__like-button_active')) {
-        api.handleDeleteLike(card.id)
-        .then(result => card.removeLike())
+    handleCardLike: (cardId) => {
+      if(cardId.querySelector('.element__like-button').classList.contains('element__like-button_active')) {
+        api.handleDeleteLike(cardId.id)
+        .then(result => card.removeLike(cardId, result))
         .catch(result => console.log(`${result} при снятии лайка`))
       }
       else {
-        api.handleLikeCard(card.id)
-          .then(result => card.addLike())
+        api.handleLikeCard(cardId.id)
+          .then(result => card.addLike(cardId, result))
           .catch(result => console.log(`${result} при постановке лайка`))
         }
       }

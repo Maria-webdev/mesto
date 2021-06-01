@@ -65,18 +65,19 @@ export class Card { //создает шаблок карточки и сами �
     return this._element;//возвращаем рез
   }
 
-  delCard() {
-    this._element.remove();
-  }
-
-  removeLike() {
+  removeLike(card, result) {
     this._element.querySelector('.element__like-button').classList.remove('element__like-button_active');
     this._element.querySelector('.element__count').textContent = result.likes.length;
   }
 
-  addLike() {
+  addLike(card, result) {
     this._element.querySelector('.element__like-button').classList.add('element__like-button_active');
     this._element.querySelector('.element__count').textContent = result.likes.length;
+  }
+
+  
+  delCard(card) {
+    this._element.remove();
   }
 
 }

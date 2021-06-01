@@ -85,7 +85,8 @@ const popupDel = new PopupDelete(popupDelete, {
   submitHandler: (cardId) => { 
     api.deleteCard(popupDel.cardId().id) 
       .then(() => { 
-        popupDel.cardId().remove(); //ИЗМЕНИТЬ НА ПУБЛИЧНЫЙ МЕТОД В CARD
+        const cardToDelete = new Card(cardId)
+        cardToDelete.delCard(cardId)
         popupDel.close(); 
       }) 
       .catch(result => console.log(`${result} при удалении карточки`)) 

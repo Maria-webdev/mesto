@@ -1,15 +1,14 @@
 import { Popup } from "./Popup.js";
 
 export class PopupDelete extends Popup {
-  constructor(popup, {submitHandler}) {
+  constructor(popup) {
     super(popup)
-    this._submitHandler = submitHandler;
   }
 
-  open(cardId) {
+  open(submitHandler) {
     super.open()
-    this._cardId = cardId;
-  }
+    this._submitHandler = submitHandler;
+  } 
 
   cardId() {
     return this._cardId;

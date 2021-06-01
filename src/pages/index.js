@@ -81,17 +81,7 @@ const popupAva = new PopupWithForm(popupAvatar, {
     }
 });
 
-const popupDel = new PopupDelete(popupDelete, { 
-  submitHandler: (cardId) => { 
-    api.deleteCard(popupDel.cardId().id) 
-      .then(() => { 
-        const cardToDelete = new Card(cardId)
-        cardToDelete.delCard(cardId)
-        popupDel.close(); 
-      }) 
-      .catch(result => console.log(`${result} при удалении карточки`)) 
-    } 
-});
+const popupDel = new PopupDelete(popupDelete);
 
 function handlePopupAvatar() {
   formAvatarValidator.clearValidationState();
@@ -119,7 +109,14 @@ function createCard(item) { //ф-ция создания карточек
       popupImage.open({link, name});//открываем модалку с фотографией, на вход прин-ся объект, состоящий из link и name
     },
     handleCardDelete: (cardId) => {
-      popupDel.open(cardId); 
+      popupDel.open(() => {
+        api.deleteCard(cardId.id)
+          .then(() => {
+            card.delCard();
+            popupDel.close();
+          })
+          .catch(result => console.log(`${result} при удалении карточки`))
+      })
     },
     handleCardLike: (cardId) => {
       if(cardId.querySelector('.element__like-button').classList.contains('element__like-button_active')) {

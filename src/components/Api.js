@@ -10,13 +10,6 @@ export class Api {
     }
     return res.json();
   } 
-
-  _getResponseData(res) {
-    if (!res.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`); 
-    }
-    return res.json();
-  } 
  
   getInitialCards() { 
     return fetch(`${this._baseUrl}/cards`, { 
@@ -34,15 +27,15 @@ export class Api {
   } 
    
   addCard(title, link) { 
-    return fetch(`${this._baseUrl}/cards`, { 
-      method: 'POST', 
-      headers: this._headers, 
-      body: JSON.stringify({ 
-        name: title, 
+    return fetch(`${this._baseUrl}/cards`, { //отправляем запрос на сервер, даем 2 аргумента: ссылку запрашиваемого ремурса (я почитала о шаблонных строках))) и обънект опций, состоящий из:
+      method: 'POST', //метож запроса
+      headers: this._headers, //заголовки запроса
+      body: JSON.stringify({ //тело запроса в виде строки в формате json
+        name: title, //передаем 2 перем из Card
         link: link 
       }) 
     }) 
-    .then((res) => this. _getResponseData(res));
+    .then((res) => this. _getResponseData(res));//если запрос успешный, то применяем приватный мметод, сохраняющий данные в формате json
   }; 
  
   editUserInfo(name, about) { 

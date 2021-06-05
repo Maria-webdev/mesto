@@ -1,3 +1,5 @@
+
+//импортируем переменные и классы
 import './index.css';
 import { initialCards } from "../utils/initial-сards.js";
 import { popupEdit, popupAdd, popupPic, popupAvatar, popupDelete, popupFormEdit, popupFormAdd, popupFormAvatar, editBtn, addBtn, deleteBtn,
@@ -11,123 +13,123 @@ import { Section } from "../components/Section.js";
 import { Api } from "../components/Api.js";
 import { PopupDelete } from "../components/PopupDelete.js";
 
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-24',
-  headers: {
-  authorization: '9d5a0019-b096-496e-ade0-699f2874ec7a',
-  'Content-Type': 'application/json'
+const api = new Api({//создаем экз класса
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-24',//адрес, к которому обращаемся
+  headers: {//заголовок запроса состоит из
+  authorization: '9d5a0019-b096-496e-ade0-699f2874ec7a',//мой токен 0лдя авторизации
+  'Content-Type': 'application/json'//тип данных
   }
 })
 
-Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([profileInfo, cards]) => {
-    userInfo.setUserInfo(profileInfo.name, profileInfo.about, profileInfo._id)
-    userInfo.setUserAvatar(profileInfo.avatar)
-    renderList.renderItems(cards)
+Promise.all([api.getUserInfo(), api.getInitialCards()])//отправляем на сервер  запросы, параметры: методы класса api с сохраненными данными пользователя и карточек
+  .then(([profileInfo, cards]) => {//если запрос прошел норм, в качестве ркзультата должны вернуться 2 объекта(?), у первого мы берем 4 параметра: имя, "о", id, аватар
+    userInfo.setUserInfo(profileInfo.name, profileInfo.about, profileInfo._id)//вызываем метод сохранения данных пользователя  класса userinfo, на вход принимаем первы3 параметра
+    userInfo.setUserAvatar(profileInfo.avatar)//ввызываем метод сохранения аватара кдасса userinfo
+    renderList.renderItems(cards)//вызываем метод класса section, принимаем на вход полученные от сервера cards
   })
-  .catch(result => console.log(`${result} при загрузке данных с сервера`))
+  .catch(result => console.log(`${result} при загрузке данных с сервера`))//если что-то пошло не так, то выводим в консоль сообщение об ошибке 
 
 
 const formEditValidator = new FormValidator(validationElements, popupFormEdit);
 formEditValidator.enableValidation();
 const formAddValidator = new FormValidator(validationElements, popupFormAdd);
 formAddValidator.enableValidation();
-const formAvatarValidator = new FormValidator(validationElements, popupFormAvatar);
-formAvatarValidator.enableValidation();
+const formAvatarValidator = new FormValidator(validationElements, popupFormAvatar);//
+formAvatarValidator.enableValidation();//
 
-const userInfo = new UserInfo(nameInput, aboutInput, profileImage);
-const popupImage = new PopupWithImage(popupPic, pic, picTitle);
+const userInfo = new UserInfo(nameInput, aboutInput, profileImage);//
+const popupImage = new PopupWithImage(popupPic, pic, picTitle);//
 
-const popupAddForm = new PopupWithForm(popupAdd, {
-  submitHandler: (data) => {
-    const button = document.querySelector('.popup__button_add');
-    button.textContent = 'Сохранение...';
-    api.addCard(data.place, data.url)
-      .then(result => {
-        const element = createCard(result)
-        renderList.addNewItem(element)
-        popupAddForm.close()
+const popupAddForm = new PopupWithForm(popupAdd, {//
+  submitHandler: (data) => {//
+    const button = document.querySelector('.popup__button_add');//
+    button.textContent = 'Сохранение...';//
+    api.addCard(data.place, data.url)//
+      .then(result => {//
+        const element = createCard(result)//
+        renderList.addNewItem(element)//
+        popupAddForm.close()//
      })
-      .catch(result => console.log(`${result} при загрузке новой карточки`))
-      .finally(() => { button.textContent = 'Сохранить' })
+      .catch(result => console.log(`${result} при загрузке новой карточки`))//
+      .finally(() => { button.textContent = 'Сохранить' })//
   }
 });
 
-const popupEditForm = new PopupWithForm(popupEdit, {
-  submitHandler: (data) => {
-    const button = document.querySelector('.popup__button_edit');
-    button.textContent = 'Сохранение...';
-    api.editUserInfo(data.name, data.about)
-      .then(result => {
-        userInfo.setUserInfo(result.name, result.about)
-        popupEditForm.close()
+const popupEditForm = new PopupWithForm(popupEdit, {//
+  submitHandler: (data) => {//
+    const button = document.querySelector('.popup__button_edit');//
+    button.textContent = 'Сохранение...';//
+    api.editUserInfo(data.name, data.about)//
+      .then(result => {//
+        userInfo.setUserInfo(result.name, result.about)//
+        popupEditForm.close()//
       })
-      .catch(result => console.log(`${result} при редактировании данных профиля`))
-      .finally(() => { button.textContent = 'Сохранить' })
+      .catch(result => console.log(`${result} при редактировании данных профиля`))//
+      .finally(() => { button.textContent = 'Сохранить' })//
     }
 });
 
-const popupAva = new PopupWithForm(popupAvatar, {
-  submitHandler: (data) => {
-    const button = document.querySelector('.popup__button_avatar');
-    button.textContent = 'Сохранение...';
-    api.newAvatar(data.avatar)
-      .then(result => {
-        userInfo.setUserAvatar(result.avatar)
-        popupAva.close();
+const popupAva = new PopupWithForm(popupAvatar, {//
+  submitHandler: (data) => {//
+    const button = document.querySelector('.popup__button_avatar');//
+    button.textContent = 'Сохранение...';//
+    api.newAvatar(data.avatar)//
+      .then(result => {//
+        userInfo.setUserAvatar(result.avatar)//
+        popupAva.close();//
       })
-      .catch(result => console.log(`${result} при редактировании фото профиля`))
-      .finally(() => { button.textContent = 'Сохранить' })
+      .catch(result => console.log(`${result} при редактировании фото профиля`))//
+      .finally(() => { button.textContent = 'Сохранить' })//
     }
 });
 
-const popupDel = new PopupDelete(popupDelete);
+const popupDel = new PopupDelete(popupDelete);//
 
-function handlePopupAvatar() {
-  formAvatarValidator.clearValidationState();
-  popupAva.open();
+function handlePopupAvatar() {//
+  formAvatarValidator.clearValidationState();//
+  popupAva.open();//
 }
 
-function handleFormSubmitPopupEdit() {
-  const getProfileInfo = userInfo.getUserInfo();
-  nameForm.value = getProfileInfo.name;
-  aboutForm.value = getProfileInfo.about;
-  formEditValidator.clearValidationState();
-  popupEditForm.open();
+function handleFormSubmitPopupEdit() {//
+  const getProfileInfo = userInfo.getUserInfo();//
+  nameForm.value = getProfileInfo.name;//
+  aboutForm.value = getProfileInfo.about;//
+  formEditValidator.clearValidationState();//
+  popupEditForm.open();//
 }
 
-function handleFormSubmitPopupAdd() {
-  formAddValidator.clearValidationState();
-  popupAddForm.open();
+function handleFormSubmitPopupAdd() {//
+  formAddValidator.clearValidationState();//
+  popupAddForm.open();//
 }
 
 function createCard(item) { //ф-ция создания карточек
-  const userId = userInfo.getUserId();
+  const userId = userInfo.getUserId();//
   const card = new Card(item, "#element-template", {//создаем экземплряр класса card, 
     //принтмаем аргументы: некий item, "ячейка", в html, в  которую новая карточка попадет, ф-ция открытия модалки с карточкой
     handleCardClick: (link, name) => {//вот тут с синтаксисом непонятно, почему с ":"
       popupImage.open({link, name});//открываем модалку с фотографией, на вход прин-ся объект, состоящий из link и name
     },
-    handleCardDelete: (cardId) => {
-      popupDel.open(() => {
-        api.deleteCard(cardId.id)
-          .then(() => {
-            card.delCard();
-            popupDel.close();
+    handleCardDelete: (cardId) => {//
+      popupDel.open(() => {//
+        api.deleteCard(cardId.id)//
+          .then(() => {//
+            card.delCard();//
+            popupDel.close();//
           })
-          .catch(result => console.log(`${result} при удалении карточки`))
+          .catch(result => console.log(`${result} при удалении карточки`))//
       })
     },
-    handleCardLike: (cardId) => {
-      if(cardId.querySelector('.element__like-button').classList.contains('element__like-button_active')) {
-        api.handleDeleteLike(cardId.id)
-        .then(result => card.removeLike(cardId, result))
-        .catch(result => console.log(`${result} при снятии лайка`))
+    handleCardLike: (cardId) => {//
+      if(cardId.querySelector('.element__like-button').classList.contains('element__like-button_active')) {//
+        api.handleDeleteLike(cardId.id)//
+        .then(result => card.removeLike(cardId, result))//
+        .catch(result => console.log(`${result} при снятии лайка`))//
       }
-      else {
-        api.handleLikeCard(cardId.id)
-          .then(result => card.addLike(cardId, result))
-          .catch(result => console.log(`${result} при постановке лайка`))
+      else {//
+        api.handleLikeCard(cardId.id)//
+          .then(result => card.addLike(cardId, result))//
+          .catch(result => console.log(`${result} при постановке лайка`))//
         }
       }
     
@@ -145,13 +147,14 @@ const renderList = new Section ({
   }}, '.elements'//
 );
 
-
+//вызываем методы классов
 popupImage.setEventListeners();
 popupAddForm.setEventListeners();
 popupEditForm.setEventListeners();
 popupAva.setEventListeners();
 popupDel.setEventListeners();
 
+//вешаем соушатели
 addBtn.addEventListener("click", handleFormSubmitPopupAdd);
 editBtn.addEventListener("click", handleFormSubmitPopupEdit);
 profileAvatar.addEventListener("click", handlePopupAvatar);

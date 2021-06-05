@@ -1,24 +1,24 @@
-import { Popup } from "./Popup.js";
+import { Popup } from "./Popup.js"; // импортируеи родительский класс
 
-export class PopupDelete extends Popup {
-  constructor(popup) {
-    super(popup)
+export class PopupDelete extends Popup {//создаем и экспортируем новый класс, благодаря extends он берет все перем и методы из родительского класса
+  constructor(popup) {//
+    super(popup)//берем конструктор родительского класса
   }
 
-  open(submitHandler) {
-    super.open()
-    this._submitHandler = submitHandler;
+  open(submitHandler) {//создаем пуб метод откытия, принимаем на вход обработчик для передачи формы (НО! я так и не поняла, почему мы его в констукторе не указываем, так просила сделать ревьюер, а если указать, то все ломается)
+    super.open()//вызваем публичный метод из родительского класса
+    this._submitHandler = submitHandler;//создаем конкретный обработчик (?) 
   } 
 
-  cardId() {
-    return this._cardId;
+  cardId() {//создаем публичный метод, который
+    return this._cardId;//возвращает коокретную карточку
   }
 
-  setEventListeners() {
-    super.setEventListeners();
-    this._popup.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      this._submitHandler();
+  setEventListeners() {//создаем публичный метод
+    super.setEventListeners();//вызываем метод из род класса
+    this._popup.addEventListener('submit', (evt) => {//вешаем обработчик нажатия на кнопку в конкретном попапе
+      evt.preventDefault();//отменяем стандартное поведение
+      this._submitHandler();//вызываем конкретный обработчик (?) 
     })
   }
 }

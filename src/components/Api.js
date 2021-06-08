@@ -28,7 +28,7 @@ export class Api {
    
   addCard(title, link) { 
     return fetch(`${this._baseUrl}/cards`, { //отправляем запрос на сервер, даем 2 аргумента: ссылку запрашиваемого ремурса (я почитала о шаблонных строках))) и обънект опций, состоящий из:
-      method: 'POST', //метож запроса
+      method: 'POST', //метод запроса
       headers: this._headers, //заголовки запроса
       body: JSON.stringify({ //тело запроса в виде строки в формате json
         name: title, //передаем 2 перем из Card
